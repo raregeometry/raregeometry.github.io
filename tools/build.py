@@ -673,7 +673,8 @@ PRODUCTS = [
             "Open <strong>Tools &gt; Photoworthy &gt; Photo Studio</strong>, press <strong>Add Photo Camera</strong> and "
             "pick a starting point.",
             "Select any objects and press <strong>Make Selected Photographable</strong>.",
-            "Press Play: <kbd>C</kbd> raises the camera, <kbd>Space</kbd> takes the photo, <kbd>Tab</kbd> opens the album.",
+            "Press Play: <kbd>C</kbd> raises the camera, <kbd>V</kbd> switches the camera body, <kbd>Space</kbd> takes the photo, "
+            "<kbd>Tab</kbd> opens the album.",
         ],
         # Its Documentation/docs.json sets the sidebar groups, order and titles.
         "pages": [],
@@ -998,6 +999,8 @@ def og_image(path):
         return "interactra/social.jpg"
     if path.startswith("responsive-fx/"):
         return "responsive-fx/social.jpg"
+    if path.startswith("photoworthy/"):
+        return "photoworthy/social.jpg"
     return "og-image.jpg"
 
 

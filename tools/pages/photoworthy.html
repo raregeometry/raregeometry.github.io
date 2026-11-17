@@ -12,7 +12,8 @@
         reasons players can read, and lets a photo complete quests, fill a journal or make anything happen.
       </p>
       <div class="btn-row">
-        <a class="btn" href="#features">Features</a>
+        <a class="btn" href="demo/index.html">Try the demo in your browser</a>
+        <a class="btn btn-ghost" href="#features">Features</a>
         <a class="btn btn-ghost" href="{{root}}photoworthy/docs/index.html">Read the manual</a>
       </div>
       <ul class="specs" aria-label="Requirements">
@@ -51,7 +52,7 @@
       </li>
       <li>
         <h3>Press Play</h3>
-        <p><kbd>C</kbd> raises the camera, <kbd>Space</kbd> takes the photo. <kbd>Tab</kbd> opens the album, <kbd>J</kbd> the journal and <kbd>P</kbd> the photo mode.</p>
+        <p><kbd>C</kbd> raises the camera, <kbd>V</kbd> switches the camera body, <kbd>Z</kbd> the lens, <kbd>X</kbd> turns it round for a selfie and <kbd>F</kbd> is the flash. <kbd>Space</kbd> takes the photo. <kbd>Tab</kbd> opens the album, <kbd>J</kbd> the journal and <kbd>P</kbd> the photo mode.</p>
       </li>
     </ol>
   </div>
@@ -76,10 +77,29 @@
       <div class="tab-card">
         <div class="tab-name"><h3>Two cameras, one component</h3></div>
         <ul>
-          <li>A handheld camera with zoom, steady aim, film and cooldown</li>
-          <li>A free photo mode: fly, tilt, focus blur, colour, filters, frames</li>
+          <li>A handheld camera with zoom, steady aim, film and bursts</li>
+          <li>A photo mode: fly or orbit, focus blur with auto focus, filters, frames, guides, a timer, viewpoints and picture shapes</li>
           <li>The same lens effects in Built-in, URP and HDRP</li>
           <li>Works with any controller; your camera is only borrowed</li>
+        </ul>
+      </div>
+      <div class="tab-card">
+        <div class="tab-name"><h3>Eight cameras to look through</h3></div>
+        <ul>
+          <li>SLR viewfinder, camera back, phone, camcorder, instant camera, rangefinder, disposable and a photo booth</li>
+          <li>Players switch between them while the camera is up</li>
+          <li>Each has its own window, picture shape and lens; the saved photo is exactly what its window shows</li>
+          <li>Recolour them, or use your own artwork</li>
+        </ul>
+      </div>
+      <div class="tab-card">
+        <div class="tab-name"><h3>Cameras with character</h3></div>
+        <ul>
+          <li>Instant prints that develop, a photo booth that prints a strip of four</li>
+          <li>A real flash that lights the saved picture: Auto, On or Off</li>
+          <li>Lenses to swap (wide, standard, telephoto), with locked ones to earn</li>
+          <li>Selfies: one key turns the camera round to face the player</li>
+          <li>Focus lock, a date stamp, each body's own shutter sound, and match a shot</li>
         </ul>
       </div>
       <div class="tab-card">
@@ -112,7 +132,8 @@
       <div class="tab-card">
         <div class="tab-name"><h3>Player screens, ready to use</h3></div>
         <ul>
-          <li>Viewfinder, result card, album, journal, requests and options</li>
+          <li>Viewfinder, result, album, journal, requests and options</li>
+          <li>Six ways to show a photo after the shutter, with a switch for every stat</li>
           <li>Three looks, each fully editable</li>
           <li>Keyboard, mouse and gamepad, with hints that follow the device</li>
           <li>Text size, reduced motion and high contrast</li>
@@ -144,12 +165,32 @@
         <figcaption>The journal: discoveries, best shots and behaviours to find</figcaption>
       </figure>
       <figure class="shot">
-        <div class="shot-frame"><img src="{{root}}assets/img/photoworthy/photo-mode.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="The photo mode with focus blur and the Vivid filter on, and the controls panel open on the Look tab"></div>
+        <div class="shot-frame"><img src="{{root}}assets/img/photoworthy/photo-mode.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="The photo mode looking at a llama with focus blur, auto focus and guide lines on, and the controls panel open on the Lens tab"></div>
         <figcaption>The photo mode: lens, look and frame</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame"><img src="{{root}}assets/img/photoworthy/camera-bodies.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Nine views of the same horse through Photoworthy's camera bodies: the back of a camera with its screen and dials, an SLR viewfinder with focus points, a phone, a camcorder with REC and a clock, an instant camera, a rangefinder with bright frame lines, a yellow disposable camera, a photo booth with its lamps, and the plain viewfinder"></div>
+        <figcaption>Eight camera bodies to look through, and the plain viewfinder</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame"><img src="{{root}}assets/img/photoworthy/selfie.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="A selfie in the Meadow Trail demo: the camera is turned round to face the hiker, a ranger with red hair, with a llama standing behind her"></div>
+        <figcaption>Selfies: one key turns the camera round</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame"><img src="{{root}}assets/img/photoworthy/result-styles.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Six ways the same photo of a horse is shown after the shutter: a card at the side, a tilted print, on the camera back's own screen, full screen with a small card, a thumbnail in the corner, and one line of text"></div>
+        <figcaption>Six ways to show a photo after the shutter</figcaption>
       </figure>
       <figure class="shot">
         <div class="shot-frame"><img src="{{root}}assets/img/photoworthy/score-inspector.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="The Score Inspector in the Unity editor listing each criterion for a view of the horse, with points and the reason for each"></div>
         <figcaption>The Score Inspector: why a view scores what it does</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame"><img src="{{root}}assets/img/photoworthy/album.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="The album screen with a grid of the player's photos and the selected photo large beside it, with its subject, medal and score"></div>
+        <figcaption>The album: every kept photo is a real picture file</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame"><img src="{{root}}assets/img/photoworthy/options.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="The players' options screen: look speed, invert look, guide lines, subject marks, key hints, shutter flash, camera sounds, text size, reduced motion and high contrast"></div>
+        <figcaption>Options players expect, and you choose which are offered</figcaption>
       </figure>
     </div>
   </div>
@@ -183,7 +224,7 @@
       </ul>
       <h3>Status</h3>
       <ul>
-        <li>Photoworthy is in its final checks before submission to the Asset Store.</li>
+        <li>Photoworthy is in its final checks before submission to the Asset Store. <a href="demo/index.html">Try the web demo</a> now.</li>
       </ul>
     </div>
   </div>

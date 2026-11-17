@@ -13,7 +13,7 @@
 <meta property="og:description" content="Scripting: documentation for the Photoworthy for Unity.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/scripting.html">
-<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/photoworthy/social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
@@ -95,6 +95,54 @@ public class MyCameraButtons : MonoBehaviour
 <td>A photo of the current view with no screen needed (taken by the game).</td>
 </tr>
 <tr>
+<td><code>CaptureFrom(spot)</code></td>
+<td>A photo from a Photo Spot, with the game camera put straight back.</td>
+</tr>
+<tr>
+<td><code>TakePhotoAfter(seconds)</code>, <code>CancelTimer()</code>, <code>TimerSeconds</code>, <code>TimerLeft</code></td>
+<td>The shutter timer.</td>
+</tr>
+<tr>
+<td><code>TakeBurst(count, interval)</code></td>
+<td>Several photos in a row from one call.</td>
+</tr>
+<tr>
+<td><code>AutoFocus</code>, <code>PictureShape</code>, <code>ResetPictureShape()</code></td>
+<td>Auto focus, and the picture shape for this session (the profile is never changed).</td>
+</tr>
+<tr>
+<td><code>Orbit</code>, <code>PhotoModeFocus</code>, <code>HideCharacter</code>, <code>GoToSpot(spot)</code>, <code>StepSpot(direction)</code></td>
+<td>The photo mode's orbit camera, hiding the character, and viewpoints.</td>
+</tr>
+<tr>
+<td><code>Body</code>, <code>BodyIndex</code>, <code>StepBody(1)</code>, <code>ResetBody()</code>, <code>Bodies</code></td>
+<td>The camera body players look through.</td>
+</tr>
+<tr>
+<td><code>Lenses</code>, <code>LensInUse</code>, <code>LensIndex</code>, <code>StepLens(1)</code>, <code>UnlockLens(name)</code>, <code>LockLens(name)</code></td>
+<td>The handheld camera's lenses.</td>
+</tr>
+<tr>
+<td><code>Selfie</code>, <code>ToggleSelfie()</code>, <code>CanSelfie</code>, <code>SelfieFocus</code>, <code>ShownInSelfie</code></td>
+<td>The selfie camera. Every shot's <code>Selfie</code> says whether it was one.</td>
+</tr>
+<tr>
+<td><code>FlashMode</code>, <code>StepFlash()</code>, <code>FlashCharge</code>, <code>FlashReady</code></td>
+<td>The flash. Every shot's <code>Flash</code> says whether it fired.</td>
+</tr>
+<tr>
+<td><code>TakeStrip(photos, secondsBetween)</code>, <code>StripRunning</code>, <code>LastStrip</code></td>
+<td>A photo strip: several photos printed as one picture.</td>
+</tr>
+<tr>
+<td><code>ShowGhost(photo)</code>, <code>ClearGhost()</code>, <code>GhostOpacity</code></td>
+<td>An earlier photo shown faintly over the view.</td>
+</tr>
+<tr>
+<td><code>FocusTarget</code></td>
+<td>The subject the viewfinder is locked on to.</td>
+</tr>
+<tr>
 <td><code>Mode</code>, <code>IsOpen</code></td>
 <td>What the camera is doing.</td>
 </tr>
@@ -123,7 +171,7 @@ public class MyCameraButtons : MonoBehaviour
 <td>Why a photo would be refused right now.</td>
 </tr>
 <tr>
-<td><code>ShutterFired</code>, <code>ShotReady</code>, <code>ShotDecided</code>, <code>ShotRefused</code>, <code>ModeChanged</code>, <code>LensChanged</code></td>
+<td><code>ShutterFired</code>, <code>ShotReady</code>, <code>ShotDecided</code>, <code>ShotRefused</code>, <code>ModeChanged</code>, <code>LensChanged</code>, <code>BodyChanged</code>, <code>LensSwapped</code>, <code>SelfieChanged</code>, <code>FlashFired</code>, <code>StripMade</code>, <code>FocusLocked</code>, <code>GhostChanged</code></td>
 <td>Events.</td>
 </tr>
 </tbody>

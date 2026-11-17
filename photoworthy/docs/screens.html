@@ -13,7 +13,7 @@
 <meta property="og:description" content="Screens and looks: documentation for the Photoworthy for Unity.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/screens.html">
-<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/photoworthy/social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
@@ -67,12 +67,12 @@ off piece by piece.</p>
 <tr>
 <td>Viewfinder</td>
 <td>While a camera is up</td>
-<td>Corner brackets, a centre mark, optional guide lines, the zoom, film left, the current request, and a mark on each subject the camera would recognise. When photos are a different shape from the screen, the part that will be cut off is dimmed.</td>
+<td>Corner brackets, a centre mark, optional guide lines (thirds, golden ratio, diagonals or centre), the zoom, film left, the flash, the current request, the shutter timer's countdown, a mark on each subject the camera would recognise and a focus bracket that locks on to the one under the centre mark. A camera body, when one is in use, is drawn round all of it. When photos are a different shape from the screen, the part that will be cut off is dimmed.</td>
 </tr>
 <tr>
 <td>Result card</td>
 <td>After a shot</td>
-<td>The photo, what it shows, the score and medal, the points for each criterion, the main reasons, new discoveries and completed requests. With Player Chooses, it waits for Keep or Discard.</td>
+<td>The photo, what it shows, the score and medal, the points for each criterion, the main reasons, new discoveries and completed requests. When a photo nearly met a request, it says what that request still needs. A print from an instant camera develops here, and a photo strip is shown here when it is printed. With Player Chooses, it waits for Keep or Discard.</td>
 </tr>
 <tr>
 <td>Notices</td>
@@ -111,6 +111,108 @@ the camera's events and build your own UI. See <a href="fit-your-game.html">Fit 
 <p>Other switches there: name subjects in the viewfinder only once photographed, guide lines, open the album and journal
 only while the camera is up, pause the game while a full-screen screen is open, free the mouse cursor while a screen
 needs it, the shutter flash and the shutter sound.</p>
+<h2 id="after-the-shot-how-a-photo-is-shown">After the shot: how a photo is shown <a class="anchor" href="#after-the-shot-how-a-photo-is-shown" aria-label="Link to this section">#</a></h2>
+<p>The result after a shot can look six ways. Pick one in the profile under <strong>Review &gt; Style</strong>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Style</th>
+<th>What players see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card</td>
+<td>A card at the side of the screen: the photo as a print with everything about it underneath. The default.</td>
+</tr>
+<tr>
+<td>Print</td>
+<td>A sheet of photo paper in the middle of the screen, a little tilted, as if handed to the player.</td>
+</tr>
+<tr>
+<td>Full Screen</td>
+<td>The photo fills the screen, the way a camera plays a picture back, with a small card in the corner.</td>
+</tr>
+<tr>
+<td>Camera Screen</td>
+<td>The photo plays back on the camera body's own screen, inside its window. With no camera body it fills the screen.</td>
+</tr>
+<tr>
+<td>Thumbnail</td>
+<td>A small picture in a corner with its name, medal and score. Out of the way of the game.</td>
+</tr>
+<tr>
+<td>Line</td>
+<td>No picture: one line at the top with the name, medal and score.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Follow Camera</strong> (on by default) lets a camera body bring its own way: the instant camera and the disposable hand
+over a print, the camera back and the camcorder play the photo on their own screen, the phone drops a thumbnail in the
+corner. A body with no way of its own, and the plain viewfinder, use the profile's style. Switch Follow Camera off and
+every photo is shown in the profile's style. Each body's way is two fields on its asset: <strong>Own Result</strong> and
+<strong>Result</strong>.</p>
+<p>What the result shows is yours to choose as well, all under Review:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Show Result</td>
+<td>Off shows nothing after a shot.</td>
+</tr>
+<tr>
+<td>Result Seconds</td>
+<td>How long it stays. 0 keeps it until the player moves on.</td>
+</tr>
+<tr>
+<td>Card On Left, Corner</td>
+<td>Where the Card and the Thumbnail sit.</td>
+</tr>
+<tr>
+<td>Show Picture</td>
+<td>The photo itself.</td>
+</tr>
+<tr>
+<td>Show News</td>
+<td>"New discovery", "New behaviour", "New best shot".</td>
+</tr>
+<tr>
+<td>Show Subject</td>
+<td>What the photo shows.</td>
+</tr>
+<tr>
+<td>Show Medal, Show Score</td>
+<td>The medal and the number, each on its own.</td>
+</tr>
+<tr>
+<td>Show Breakdown, Breakdown</td>
+<td>The points for each thing the photo was judged on, and which of the six are listed.</td>
+</tr>
+<tr>
+<td>Show Hints</td>
+<td>What held the score back, and what a nearly finished request still needs.</td>
+</tr>
+<tr>
+<td>Show Request</td>
+<td>The request the photo completed.</td>
+</tr>
+<tr>
+<td>Quiet In Photo Mode</td>
+<td>Photos from the photo mode skip the result.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Thumbnail and Line are small on purpose: they show the picture (Thumbnail), the name, the medal and the score, and
+the request a photo completed. With every part switched off, Full Screen and Camera Screen still play the photo back,
+with no card on it. From code, <code>review.ShowEverything(false)</code> switches every part off at once, and
+<code>review.StyleFor(body)</code> says which style a body's photo will use.</p>
+<p>For something else entirely (a photo pinned to a board in the world, your own animation), switch Show Result off and
+use the Photo Camera's Photo Taken event or <code>ShotReady</code>; see <a href="fit-your-game.html">Fit it into your game</a>.</p>
 <h2 id="looks">Looks <a class="anchor" href="#looks" aria-label="Link to this section">#</a></h2>
 <p>A <strong>Photo Look</strong> asset holds every colour, corner, line thickness, the font, text size, title capitals and motion
 time. Three are built in:</p>
@@ -220,7 +322,7 @@ below your other UI Toolkit panels, and a slot for your own Panel Settings.</p>
 <div class="doc-pager"><a class="pager prev" href="album-and-journal.html"><span class="label">Previous</span>Album and journal</a><a class="pager next" href="scripting.html"><span class="label">Next</span>Scripting</a></div>
 <p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Screens+and+looks" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
 </article>
-<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-screens">The screens</a></li><li class="toc-2"><a href="#looks">Looks</a></li><li class="toc-2"><a href="#words">Words</a></li><li class="toc-2"><a href="#players-options">Players&#x27; options</a></li><li class="toc-2"><a href="#accessibility">Accessibility</a></li><li class="toc-2"><a href="#sounds">Sounds</a></li><li class="toc-2"><a href="#your-own-panel-settings">Your own panel settings</a></li></ul></nav>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-screens">The screens</a></li><li class="toc-2"><a href="#after-the-shot-how-a-photo-is-shown">After the shot: how a photo is shown</a></li><li class="toc-2"><a href="#looks">Looks</a></li><li class="toc-2"><a href="#words">Words</a></li><li class="toc-2"><a href="#players-options">Players&#x27; options</a></li><li class="toc-2"><a href="#accessibility">Accessibility</a></li><li class="toc-2"><a href="#sounds">Sounds</a></li><li class="toc-2"><a href="#your-own-panel-settings">Your own panel settings</a></li></ul></nav>
 </div>
 </main>
 <footer class="site-footer">

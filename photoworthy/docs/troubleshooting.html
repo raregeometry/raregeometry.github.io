@@ -13,7 +13,7 @@
 <meta property="og:description" content="Troubleshooting and questions: documentation for the Photoworthy for Unity.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/troubleshooting.html">
-<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/photoworthy/social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
@@ -60,7 +60,18 @@ click. For "why this score?", use <strong>Tools &gt; Photoworthy &gt; Score Insp
 <li>Is the handheld camera enabled in the profile, and is Built In Input on under Keys?</li>
 <li>With only the Input System active, the kit reads the same keys through it. If your project has neither input
   system active, call <code>OpenHandheld</code> from your own code.</li>
+<li>A project made from Unity's 3D (HDRP) template is set to the Input System without having the package, so no
+  keys reach any game in it, and Unity's own UI code logs an error every frame. The Console and the Photo Studio's
+  Check tab say so ("No keys or buttons reach the game"). Install Input System in the Package Manager, or set Project
+  Settings &gt; Player &gt; Active Input Handling to Both.</li>
 <li>Is the camera blocked (<code>Blocked</code>, <code>CanOpen</code>)? The Shot Refused event says why.</li>
+</ul>
+<h2 id="the-selfie-shows-no-character">The selfie shows no character <a class="anchor" href="#the-selfie-shows-no-character" aria-label="Link to this section">#</a></h2>
+<ul>
+<li>In a first-person game the character model is hidden or does not exist. List the model under <strong>Shown In Selfie</strong> on
+  the Photo Camera, and set <strong>Selfie Focus</strong> to a transform at its face.</li>
+<li>If the face fills the picture, raise <strong>Arm Length</strong> in the profile under Handheld &gt; Selfie; <strong>Face Side</strong> moves the
+  face to one side.</li>
 </ul>
 <h2 id="my-subject-is-not-recognised">My subject is not recognised <a class="anchor" href="#my-subject-is-not-recognised" aria-label="Link to this section">#</a></h2>
 <p>Open the Score Inspector and press Judge Game Camera. The subject is listed under <strong>Nearby but not counted</strong> with
@@ -109,6 +120,15 @@ as its Scoring Override. Switch off criteria that do not apply: the others share
 <li><strong>Built-in</strong>: the kit adds its own image effect to the camera while a screen is open. A second camera drawn on top
   of the game camera can cover it.</li>
 </ul>
+<h2 id="the-flash-does-nothing">The flash does nothing <a class="anchor" href="#the-flash-does-nothing" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>It is day.</strong> A flash adds little to a sunlit scene, the same as a real one. Press N in the demos for night.</li>
+<li><strong>Auto never fires</strong>: Auto only fires when the view is darker than Dark Below (profile, Handheld &gt; Flash). Set the
+  mode to On to check the light itself.</li>
+<li><strong>Unlit materials</strong> are not lit by any light. The flash lights what your own lights light.</li>
+<li><strong>URP</strong>: the flash is an extra (additional) light. In the URP Asset, Additional Lights must not be Disabled.</li>
+<li><strong>HDRP</strong> measures light in candela: raise Brightness Hdrp until it suits your scene's exposure.</li>
+</ul>
 <h2 id="my-own-hud-shows-in-photos">My own HUD shows in photos <a class="anchor" href="#my-own-hud-shows-in-photos" aria-label="Link to this section">#</a></h2>
 <p>Photos are a fresh render of the game camera, so screen-space overlay UI never appears. UI on a camera-space or
 world-space canvas does: list those objects under Storage &gt; Hide In Pictures.</p>
@@ -143,7 +163,7 @@ the profile's Photo Mode if your game wants them to.</p>
 <div class="doc-pager"><a class="pager prev" href="scripting.html"><span class="label">Previous</span>Scripting</a><a class="pager next" href="support.html"><span class="label">Next</span>Support</a></div>
 <p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Troubleshooting+and+questions" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
 </article>
-<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#nothing-happens-when-i-press-c">Nothing happens when I press C</a></li><li class="toc-2"><a href="#my-subject-is-not-recognised">My subject is not recognised</a></li><li class="toc-2"><a href="#the-whole-subject-is-in-view-but-it-says-partly-hidden">The whole subject is in view but it says &quot;Partly hidden&quot;</a></li><li class="toc-2"><a href="#the-score-seems-wrong-for-my-kind-of-subject">The score seems wrong for my kind of subject</a></li><li class="toc-2"><a href="#the-photo-mode-has-no-blur-or-the-filters-do-nothing">The photo mode has no blur, or the filters do nothing</a></li><li class="toc-2"><a href="#my-own-hud-shows-in-photos">My own HUD shows in photos</a></li><li class="toc-2"><a href="#photos-are-too-large-or-saving-stutters">Photos are too large, or saving stutters</a></li><li class="toc-2"><a href="#the-album-is-empty-after-restarting">The album is empty after restarting</a></li><li class="toc-2"><a href="#where-are-the-photos">Where are the photos?</a></li><li class="toc-2"><a href="#can-i-use-my-own-ui-and-still-use-the-album-and-journal-data">Can I use my own UI and still use the album and journal data?</a></li><li class="toc-2"><a href="#does-it-need-the-post-processing-package-cinemachine-or-textmeshpro">Does it need the Post Processing package, Cinemachine or TextMeshPro?</a></li><li class="toc-2"><a href="#does-it-work-in-2d-or-with-an-orthographic-camera">Does it work in 2D or with an orthographic camera?</a></li><li class="toc-2"><a href="#can-a-photo-be-judged-without-making-a-picture">Can a photo be judged without making a picture?</a></li><li class="toc-2"><a href="#can-players-cheat-by-pausing-in-the-photo-mode">Can players cheat by pausing in the photo mode?</a></li><li class="toc-2"><a href="#does-anything-run-when-the-camera-is-down">Does anything run when the camera is down?</a></li><li class="toc-2"><a href="#how-do-i-remove-the-demos">How do I remove the demos?</a></li></ul></nav>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#nothing-happens-when-i-press-c">Nothing happens when I press C</a></li><li class="toc-2"><a href="#the-selfie-shows-no-character">The selfie shows no character</a></li><li class="toc-2"><a href="#my-subject-is-not-recognised">My subject is not recognised</a></li><li class="toc-2"><a href="#the-whole-subject-is-in-view-but-it-says-partly-hidden">The whole subject is in view but it says &quot;Partly hidden&quot;</a></li><li class="toc-2"><a href="#the-score-seems-wrong-for-my-kind-of-subject">The score seems wrong for my kind of subject</a></li><li class="toc-2"><a href="#the-photo-mode-has-no-blur-or-the-filters-do-nothing">The photo mode has no blur, or the filters do nothing</a></li><li class="toc-2"><a href="#the-flash-does-nothing">The flash does nothing</a></li><li class="toc-2"><a href="#my-own-hud-shows-in-photos">My own HUD shows in photos</a></li><li class="toc-2"><a href="#photos-are-too-large-or-saving-stutters">Photos are too large, or saving stutters</a></li><li class="toc-2"><a href="#the-album-is-empty-after-restarting">The album is empty after restarting</a></li><li class="toc-2"><a href="#where-are-the-photos">Where are the photos?</a></li><li class="toc-2"><a href="#can-i-use-my-own-ui-and-still-use-the-album-and-journal-data">Can I use my own UI and still use the album and journal data?</a></li><li class="toc-2"><a href="#does-it-need-the-post-processing-package-cinemachine-or-textmeshpro">Does it need the Post Processing package, Cinemachine or TextMeshPro?</a></li><li class="toc-2"><a href="#does-it-work-in-2d-or-with-an-orthographic-camera">Does it work in 2D or with an orthographic camera?</a></li><li class="toc-2"><a href="#can-a-photo-be-judged-without-making-a-picture">Can a photo be judged without making a picture?</a></li><li class="toc-2"><a href="#can-players-cheat-by-pausing-in-the-photo-mode">Can players cheat by pausing in the photo mode?</a></li><li class="toc-2"><a href="#does-anything-run-when-the-camera-is-down">Does anything run when the camera is down?</a></li><li class="toc-2"><a href="#how-do-i-remove-the-demos">How do I remove the demos?</a></li></ul></nav>
 </div>
 </main>
 <footer class="site-footer">

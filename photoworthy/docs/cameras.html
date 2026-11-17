@@ -13,7 +13,7 @@
 <meta property="og:description" content="Cameras: documentation for the Photoworthy for Unity.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/cameras.html">
-<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/photoworthy/social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
@@ -84,13 +84,30 @@ take photos with no camera screen at all).</p>
 <td>Components switched off while the photo mode is open (your player controller).</td>
 </tr>
 <tr>
+<td>Photo Mode Focus</td>
+<td>The character or object the photo mode can circle. With one set, players can switch the photo mode between Free and Orbit.</td>
+</tr>
+<tr>
+<td>Hideable In Photo Mode</td>
+<td>Objects players may hide in the photo mode, usually their own character. Only the renderers are switched off, and they come back on closing.</td>
+</tr>
+<tr>
+<td>Selfie Focus</td>
+<td>The player's face or head, which the selfie camera looks at. Empty uses the Photo Mode Focus, then the Handheld Viewpoint, then the game camera's own place. See <a href="#selfies">Selfies</a>.</td>
+</tr>
+<tr>
+<td>Shown In Selfie</td>
+<td>Objects shown only while the selfie camera is up: the character model of a first-person game, hidden the rest of the time.</td>
+</tr>
+<tr>
 <td>Events</td>
-<td>Opened, Closed, Photo Taken, Photo Kept, Photo Discarded, Photo Saved, Shot Refused.</td>
+<td>Opened, Closed, Photo Taken, Photo Kept, Photo Discarded, Photo Saved, Shot Refused, Selfie Changed.</td>
 </tr>
 </tbody>
 </table></div>
 <p>Your game camera is borrowed, never replaced. While a screen is open the kit changes its field of view and, in the
-photo mode, its position. On closing, position, rotation, field of view and any lens effect are put back exactly.</p>
+photo mode, its position. On closing, its place on its parent, its rotation, field of view and any lens effect are
+put back exactly, so a camera that rides on a character stays with the character.</p>
 <h2 id="the-handheld-camera">The handheld camera <a class="anchor" href="#the-handheld-camera" aria-label="Link to this section">#</a></h2>
 <p>The in-world camera, used while the game runs: raise it, zoom, take the photo. Settings are in the profile under
 Handheld.</p>
@@ -130,8 +147,308 @@ Handheld.</p>
 <td>Counts For Progress</td>
 <td>Photos from it can be judged, complete requests and fill the journal.</td>
 </tr>
+<tr>
+<td>Body</td>
+<td>The camera body players look through when they raise the camera. Empty is the plain viewfinder.</td>
+</tr>
+<tr>
+<td>Players Switch Body</td>
+<td>Players can switch between camera bodies while the camera is up (V, or X on a gamepad).</td>
+</tr>
+<tr>
+<td>Bodies</td>
+<td>The bodies players can switch between. Empty offers the built-in set of eight.</td>
+</tr>
+<tr>
+<td>Lenses, Players Switch Lens</td>
+<td>Lenses players swap between, each with its own zoom range. See <a href="#lenses">Lenses</a>.</td>
+</tr>
+<tr>
+<td>Selfie</td>
+<td>The selfie camera: the handheld camera turned round to face the player. See <a href="#selfies">Selfies</a>.</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>The flash: a real light that fires at the shutter. See <a href="#the-flash">The flash</a>.</td>
+</tr>
 </tbody>
 </table></div>
+<h2 id="camera-bodies">Camera bodies <a class="anchor" href="#camera-bodies" aria-label="Link to this section">#</a></h2>
+<p>A <strong>camera body</strong> is a camera the player looks through: the handheld camera then looks like a real camera held up in
+front of them, not a bare screen. Eight are built in, and players switch between them with V while the camera is up:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Body</th>
+<th>What the player sees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLR Viewfinder</td>
+<td>Through the eyepiece: a dark surround, focus points, a readout strip with the lens length and film left.</td>
+</tr>
+<tr>
+<td>Camera Back</td>
+<td>The back of a camera held up: its screen, a dial, a four-way pad and buttons.</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>A phone held sideways with its camera app: a shutter button, a zoom readout.</td>
+</tr>
+<tr>
+<td>Camcorder</td>
+<td>A fold-out screen with REC, a running clock, the date, a battery and a zoom bar.</td>
+</tr>
+<tr>
+<td>Instant Camera</td>
+<td>The small square eyepiece of an instant camera. Square pictures with an instant print frame, and a fixed lens.</td>
+</tr>
+<tr>
+<td>Rangefinder</td>
+<td>Bright frame lines with extra view round them, and a focusing patch in the middle.</td>
+</tr>
+<tr>
+<td>Disposable</td>
+<td>The tiny plastic window of a single-use camera. A fixed lens, a faded look and the date burned into the corner.</td>
+</tr>
+<tr>
+<td>Photo Booth</td>
+<td>Curtains, a brass frame and a row of lamps. One press takes four photos with a countdown before each and prints them as one strip.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each camera has its own character, and every part of it is a setting you can give to any body:</p>
+<ul>
+<li><strong>Its own shutter sound</strong>: a mirror slap, a soft click, two beeps, a motor pushing a print out, a winding ratchet.
+  All made in code; give a body your own clip to replace it.</li>
+<li><strong>A date stamp</strong>: the camcorder and the disposable burn the date into the corner of the saved picture.</li>
+<li><strong>A print that develops</strong>: the instant camera's photo comes up from pale paper on the result card.</li>
+<li><strong>A photo strip</strong>: the photo booth prints its photos as one tall picture.</li>
+</ul>
+<p><strong>The saved picture is exactly what shows in the body's window.</strong> The body itself is never in the picture, and
+recognition, scoring and requests all judge the window, not the whole screen. A body can also bring what goes with
+that camera: its own picture shape, how much of the zoom range it has, a filter and a frame. The player's own choices
+(in the photo mode's Frame tab, say) still win.</p>
+<p>Only the handheld camera has a body. The photo mode is always the free camera.</p>
+<h3 id="make-your-own">Make your own <a class="anchor" href="#make-your-own" aria-label="Link to this section">#</a></h3>
+<p><strong>Create &gt; Photoworthy &gt; Camera Body</strong> makes a body asset. Pick a Style, press <strong>Use This Style's Colours And
+Window</strong>, then change anything:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Style</td>
+<td>How the body is drawn: one of the seven above, or Picture for your own artwork.</td>
+</tr>
+<tr>
+<td>Window</td>
+<td>How much of the screen's height the picture window takes.</td>
+</tr>
+<tr>
+<td>Own Shape, Shape</td>
+<td>The picture shape of this body. Off uses the profile's.</td>
+</tr>
+<tr>
+<td>Corner</td>
+<td>How round the window's corners are.</td>
+</tr>
+<tr>
+<td>Zoom Limit</td>
+<td>How much of the profile's zoom range this body can use. 0 is a fixed lens.</td>
+</tr>
+<tr>
+<td>Body, Trim, Accent, Text</td>
+<td>The body's colours.</td>
+</tr>
+<tr>
+<td>Outside</td>
+<td>How dark the world outside a camera held in front of you is.</td>
+</tr>
+<tr>
+<td>Readouts</td>
+<td>Show the body's readouts (lens length, film left, the clock).</td>
+</tr>
+<tr>
+<td>Picture</td>
+<td>Your own artwork for the Picture style: a picture the shape of the screen with a see-through window in the middle.</td>
+</tr>
+<tr>
+<td>Filter, Frame</td>
+<td>A filter and a frame that go with this body until the player picks another.</td>
+</tr>
+<tr>
+<td>Raise Seconds</td>
+<td>How long the body takes to come up when the camera is raised.</td>
+</tr>
+<tr>
+<td>Blackout</td>
+<td>How long the window goes dark at the shutter.</td>
+</tr>
+<tr>
+<td>Shutter Sound</td>
+<td>This body's own shutter sound. Empty uses the built-in sound of its style.</td>
+</tr>
+<tr>
+<td>Date Stamp, Stamp Color</td>
+<td>Burn the date into a corner of every saved picture, in this colour.</td>
+</tr>
+<tr>
+<td>Own Result, Result</td>
+<td>How this body shows a photo after the shutter (a print, on its own screen, a thumbnail and so on), when the profile's Review settings follow the camera. See <a href="screens.html#after-the-shot-how-a-photo-is-shown">After the shot</a>.</td>
+</tr>
+<tr>
+<td>Develop Seconds</td>
+<td>The photo comes up from pale paper on the result card over this many seconds. 0 shows it at once.</td>
+</tr>
+<tr>
+<td>Strip Photos, Strip Seconds</td>
+<td>One press takes this many photos, with this countdown before each, and prints them as one strip.</td>
+</tr>
+</tbody>
+</table></div>
+<p>List your bodies in the profile under <strong>Handheld &gt; Bodies</strong>, and set <strong>Body</strong> to the one the camera starts with.
+<strong>Tools &gt; Photoworthy &gt; Create Camera Body Assets</strong> makes the eight built-in bodies as assets of your own, ready to
+recolour. To give every player one fixed camera, set Body and switch <strong>Players Switch Body</strong> off.</p>
+<p>From code: <code>Body</code>, <code>BodyIndex</code>, <code>StepBody(1)</code>, <code>ResetBody()</code> and the <code>BodyChanged</code> event on the Photo Camera.</p>
+<p>With reduced motion on, the body appears at once and the window does not go dark at the shutter.</p>
+<h2 id="lenses">Lenses <a class="anchor" href="#lenses" aria-label="Link to this section">#</a></h2>
+<p>List lenses in the profile under <strong>Handheld &gt; Lenses</strong> and players swap between them with Z while the camera is up:
+a wide lens for landscapes, a standard one, a long telephoto for shy animals. Each lens is a name and a zoom range
+(Widest View and Closest Zoom, as fields of view), and a new lens always starts at its widest. With no lenses listed
+the camera has one lens: the zoom range at the top of Handheld.</p>
+<p>Untick <strong>Unlocked</strong> on a lens and it becomes a reward: the player does not have it until your game calls
+<code>UnlockLens("Telephoto")</code> on the Photo Camera, for a finished request, a shop, a level. <code>LockLens</code> takes it back.
+From code: <code>Lenses</code>, <code>LensInUse</code>, <code>LensIndex</code>, <code>StepLens(1)</code>, <code>LensesUnlocked</code> and the <code>LensSwapped</code> event. A camera
+body's Zoom Limit applies to whichever lens is on.</p>
+<h2 id="selfies">Selfies <a class="anchor" href="#selfies" aria-label="Link to this section">#</a></h2>
+<p>X turns the handheld camera round (Start on a gamepad). It is held at arm's length in front of the player and looks
+back at them, with whatever is behind them in the picture. X again turns it back. Everything else works as before:
+the camera bodies, the flash, bursts, the photo booth strip.</p>
+<ul>
+<li><strong>The face.</strong> Give the Photo Camera a <strong>Selfie Focus</strong>: a transform at the character's face or head. Without one
+  the camera uses the Photo Mode Focus, then the Handheld Viewpoint, then the game camera's own place.</li>
+<li><strong>A first-person game.</strong> The character model is usually hidden. List it under <strong>Shown In Selfie</strong> and it is switched
+  on for the selfie and off again after. For anything else (a pose, an expression, a layer), use the <strong>Selfie
+  Changed</strong> event.</li>
+<li><strong>Looking around.</strong> The arm points where the player looks: turning turns the camera round the player, and looking
+  up lifts it, as far as <strong>Tip</strong> allows. This follows your own controller, or the kit's when Controls Look is on.</li>
+<li><strong>Nothing in the way.</strong> The player's own colliders never hide the subject behind them, and the camera comes closer
+  instead of going through a wall.</li>
+</ul>
+<p>In the profile, under <strong>Handheld &gt; Selfie</strong>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enabled, Players Switch</td>
+<td>Allow selfies, and let players switch with the key. Off leaves it to your code.</td>
+</tr>
+<tr>
+<td>Arm Length, Lift</td>
+<td>How far in front of the face the camera is held, and how far above it.</td>
+</tr>
+<tr>
+<td>Field Of View</td>
+<td>The selfie camera's own wide view. 0 keeps the lens that is on.</td>
+</tr>
+<tr>
+<td>Tip</td>
+<td>How far players can tip the camera up and down.</td>
+</tr>
+<tr>
+<td>Face Side</td>
+<td>Where the face sits in the picture: 0 the middle, -1 the left edge, 1 the right. To one side leaves room for what is behind.</td>
+</tr>
+<tr>
+<td>Collide, Collision Layers, Collision Radius</td>
+<td>Keep the camera out of walls.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A photo taken this way carries the value <code>selfie</code> = <code>yes</code>, and its shot has <code>Selfie</code> set. So a request can ask for a
+selfie with a subject: a <strong>Shows Subject</strong> rule and a <strong>Data Equals</strong> rule with the name <code>selfie</code> and the value
+<code>yes</code>. From code: <code>Selfie</code>, <code>ToggleSelfie()</code>, <code>CanSelfie</code>, <code>SelfieFocus</code>, <code>ShownInSelfie</code> and the <code>SelfieChanged</code>
+event.</p>
+<h2 id="the-flash">The flash <a class="anchor" href="#the-flash" aria-label="Link to this section">#</a></h2>
+<p>The flash is a real light, not a white screen: it fires at the shutter, so it is in the saved picture, and it lights
+whatever your own lights light. Players switch it between Auto, On and Off with F while the camera is up, and the
+viewfinder says which it is. Settings are in the profile under Handheld &gt; Flash.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enabled</td>
+<td>The camera has a flash.</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>When it fires, until the player chooses: Off, Auto (when the view is dark) or On.</td>
+</tr>
+<tr>
+<td>Players Switch</td>
+<td>Players can switch the mode while the camera is up.</td>
+</tr>
+<tr>
+<td>Brightness, Brightness Hdrp</td>
+<td>How bright it is. The High Definition pipeline measures light in candela, so it has its own number.</td>
+</tr>
+<tr>
+<td>Range, Color</td>
+<td>How far it reaches, and its colour.</td>
+</tr>
+<tr>
+<td>Dark Below</td>
+<td>Auto fires when the view is darker than this.</td>
+</tr>
+<tr>
+<td>Seconds</td>
+<td>How long the flash stays on the screen.</td>
+</tr>
+<tr>
+<td>Recharge</td>
+<td>How long it takes to charge again. A photo taken sooner is taken without it.</td>
+</tr>
+<tr>
+<td>In Photo Mode</td>
+<td>The flash also fires in the photo mode.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Auto looks at how dark the view is with one very small extra render at the shutter, never every frame. From code:
+<code>FlashMode</code>, <code>StepFlash()</code>, <code>FlashCharge</code>, the <code>FlashFired</code> event, and <code>Flash</code> on every shot says whether it fired.
+Surfaces with unlit materials are not lit by any light, the flash included. In the demos, N switches day and night.</p>
+<h2 id="photo-strips">Photo strips <a class="anchor" href="#photo-strips" aria-label="Link to this section">#</a></h2>
+<p>A photo strip is several photos printed as one tall picture, the way a photo booth does it. The Photo Booth body
+takes one with every press; from code, any camera can: <code>TakeStrip(4, 3f)</code> takes four photos with a three second
+countdown before each. Every photo of a strip is an ordinary photo (judged, kept and counted like any other); the
+strip is an extra picture in the album. The shutter button or Back stops it part way.</p>
+<p>How it is printed is in the profile under Strip: the paper's colour, the border, the gap between photos, the wider
+band at the bottom, how tall each photo is, and whether the strip is kept in the album. The <code>StripMade</code> event hands
+you the strip, for a reward or your own screen.</p>
+<h2 id="focus-lock">Focus lock <a class="anchor" href="#focus-lock" aria-label="Link to this section">#</a></h2>
+<p>With subject marks on, a bracket glides to whichever subject is under the centre mark and closes in with a chirp
+when it has held it for a moment. It tells the player "this is what the photo will be of" before they press the
+shutter. Switch it off under Screens &gt; Focus Lock. From code: <code>FocusTarget</code> and the <code>FocusLocked</code> event.</p>
+<h2 id="match-a-shot">Match a shot <a class="anchor" href="#match-a-shot" aria-label="Link to this section">#</a></h2>
+<p>In the album, G raises the camera with the chosen photo shown faintly over the view, so the player can take the
+same shot again: a before-and-after, a "find where this was taken" quest. G again takes it away, and so does putting
+the camera down. From code: <code>ShowGhost(photo)</code>, <code>ClearGhost()</code>, <code>GhostOpacity</code>.</p>
 <h2 id="the-photo-mode">The photo mode <a class="anchor" href="#the-photo-mode" aria-label="Link to this section">#</a></h2>
 <p>A free camera for beautiful pictures: fly, zoom, tilt, set the lens, hide the controls, take the photo. Settings are in
 the profile under Photo Mode.</p>
@@ -173,9 +490,54 @@ the profile under Photo Mode.</p>
 </tr>
 </tbody>
 </table></div>
-<p>The controls panel has four tabs: <strong>Camera</strong> (zoom, tilt, guide lines), <strong>Lens</strong> (focus blur, focus distance, blur
-amount, brightness, contrast, colour), <strong>Look</strong> (filter, warmth, tint, dark corners) and <strong>Frame</strong>. Up and down pick a
-row, left and right change it; the mouse works too. H hides the controls for a clean view, R resets the lens.</p>
+<p>The controls panel has four tabs. Up and down pick a row, left and right change it; the mouse works too. H hides the
+controls for a clean view, R resets the lens.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera</td>
+<td>Zoom, tilt, guide lines (thirds, golden ratio, diagonals, centre), the shutter timer, Free or Orbit, show or hide the character, viewpoints</td>
+</tr>
+<tr>
+<td>Lens</td>
+<td>Focus blur, auto focus, focus distance, blur amount, brightness, contrast, colour</td>
+</tr>
+<tr>
+<td>Look</td>
+<td>Filter, warmth, tint, dark corners</td>
+</tr>
+<tr>
+<td>Frame</td>
+<td>Frame, and the picture's shape (screen, 16:9, 3:2, 4:3, square, portrait 4:5 and 9:16, 21:9)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rows only show when they apply: Orbit needs a Photo Mode Focus, the character row needs something hideable, viewpoints
+need a Photo Spot in the scene, and the timer and shape rows have their own switches in the profile.</p>
+<h3 id="auto-focus">Auto focus <a class="anchor" href="#auto-focus" aria-label="Link to this section">#</a></h3>
+<p>With focus blur on, the focus follows whatever is under the centre mark: a photo subject first (it needs no collider),
+otherwise the first thing a ray from the lens hits. Changing the focus distance by hand takes over until auto focus is
+switched on again.</p>
+<h3 id="orbit">Orbit <a class="anchor" href="#orbit" aria-label="Link to this section">#</a></h3>
+<p>Give the Photo Camera a <strong>Photo Mode Focus</strong> (a transform at the character's chest or head) and the photo mode gets a
+Camera row: Free flies as before, Orbit circles the focus. In Orbit, looking turns the camera round the focus, forward
+and back move in and out, and up and down raise the point being circled. Walls still stop the camera.</p>
+<h3 id="viewpoints">Viewpoints <a class="anchor" href="#viewpoints" aria-label="Link to this section">#</a></h3>
+<p>A <strong>Photo Spot</strong> (Add Component &gt; Photoworthy &gt; Photo Spot) is a camera position you place in the scene: point its
+blue arrow where the camera should look and give it a name. The photo mode's Viewpoint row steps through them, so
+players can jump to the best views you found. From a spot they can still look around and fly on.</p>
+<p>A spot is also a fixed camera for your game: call its <code>Capture()</code> from any event (a ride passing a finish line, a
+security camera, a checkpoint) and a photo is taken from there, with the game camera put straight back.</p>
+<h3 id="the-shutter-timer">The shutter timer <a class="anchor" href="#the-shutter-timer" aria-label="Link to this section">#</a></h3>
+<p>The Timer row sets 3, 5 or 10 seconds. The shutter then counts down in the middle of the view before the photo is
+taken, so players can pose or hide the controls first. Pressing the shutter or Back again cancels it. From code:
+<code>TakePhotoAfter(seconds)</code> and <code>CancelTimer()</code>.</p>
 <h2 id="lens-effects-in-every-pipeline">Lens effects in every pipeline <a class="anchor" href="#lens-effects-in-every-pipeline" aria-label="Link to this section">#</a></h2>
 <p>Focus blur, brightness, contrast, colour, warmth, tint and dark corners work the same in all three render pipelines,
 with nothing to set up:</p>
@@ -213,6 +575,14 @@ the saved picture.</p>
 <td>Seconds before the next photo.</td>
 </tr>
 <tr>
+<td>Burst, Burst Interval</td>
+<td>How many photos one press of the handheld shutter takes, and the gap between them. A burst of 3 to 5 is the easy way to catch a jump. Each photo uses film.</td>
+</tr>
+<tr>
+<td>Burst Sheet</td>
+<td>Print each burst as one contact sheet as well: its photos side by side on one picture in the album.</td>
+</tr>
+<tr>
 <td>Refund Rejected</td>
 <td>Photos that are not kept give their shot back.</td>
 </tr>
@@ -236,7 +606,7 @@ and <code>CanShoot</code>. When a photo is refused, the Shot Refused event says 
 <div class="doc-pager"><a class="pager prev" href="requests.html"><span class="label">Previous</span>Photo requests</a><a class="pager next" href="album-and-journal.html"><span class="label">Next</span>Album and journal</a></div>
 <p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Cameras" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
 </article>
-<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-photo-camera-component">The Photo Camera component</a></li><li class="toc-2"><a href="#the-handheld-camera">The handheld camera</a></li><li class="toc-2"><a href="#the-photo-mode">The photo mode</a></li><li class="toc-2"><a href="#lens-effects-in-every-pipeline">Lens effects in every pipeline</a></li><li class="toc-2"><a href="#filters-and-frames">Filters and frames</a></li><li class="toc-2"><a href="#film-and-pace">Film and pace</a></li><li class="toc-2"><a href="#which-photos-are-kept">Which photos are kept</a></li><li class="toc-2"><a href="#when-the-camera-says-no">When the camera says no</a></li><li class="toc-2"><a href="#keys">Keys</a></li></ul></nav>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-photo-camera-component">The Photo Camera component</a></li><li class="toc-2"><a href="#the-handheld-camera">The handheld camera</a></li><li class="toc-2"><a href="#camera-bodies">Camera bodies</a></li><li class="toc-3"><a href="#make-your-own">Make your own</a></li><li class="toc-2"><a href="#lenses">Lenses</a></li><li class="toc-2"><a href="#selfies">Selfies</a></li><li class="toc-2"><a href="#the-flash">The flash</a></li><li class="toc-2"><a href="#photo-strips">Photo strips</a></li><li class="toc-2"><a href="#focus-lock">Focus lock</a></li><li class="toc-2"><a href="#match-a-shot">Match a shot</a></li><li class="toc-2"><a href="#the-photo-mode">The photo mode</a></li><li class="toc-3"><a href="#auto-focus">Auto focus</a></li><li class="toc-3"><a href="#orbit">Orbit</a></li><li class="toc-3"><a href="#viewpoints">Viewpoints</a></li><li class="toc-3"><a href="#the-shutter-timer">The shutter timer</a></li><li class="toc-2"><a href="#lens-effects-in-every-pipeline">Lens effects in every pipeline</a></li><li class="toc-2"><a href="#filters-and-frames">Filters and frames</a></li><li class="toc-2"><a href="#film-and-pace">Film and pace</a></li><li class="toc-2"><a href="#which-photos-are-kept">Which photos are kept</a></li><li class="toc-2"><a href="#when-the-camera-says-no">When the camera says no</a></li><li class="toc-2"><a href="#keys">Keys</a></li></ul></nav>
 </div>
 </main>
 <footer class="site-footer">

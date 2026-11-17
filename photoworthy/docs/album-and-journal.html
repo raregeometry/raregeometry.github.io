@@ -13,7 +13,7 @@
 <meta property="og:description" content="Album and journal: documentation for the Photoworthy for Unity.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/album-and-journal.html">
-<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/photoworthy/social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
@@ -109,6 +109,10 @@
 <td>Hide In Pictures</td>
 <td>Objects switched off for the instant the picture is made (a held item, your own HUD on a camera canvas).</td>
 </tr>
+<tr>
+<td>Logo, Logo Corner, Logo Height, Logo Margin, Logo Opacity</td>
+<td>Your game's logo, stamped in a corner of every saved picture, so shared photos carry your name. Use a texture with a see-through background.</td>
+</tr>
 </tbody>
 </table></div>
 <p>Pictures are files in the game's own save location (<code>Application.persistentDataPath</code>), so they survive between
@@ -118,7 +122,8 @@ previous list kept as a backup. If the list is ever lost, the album rebuilds its
 <h3 id="the-album-screen">The album screen <a class="anchor" href="#the-album-screen" aria-label="Link to this section">#</a></h3>
 <p>Tab opens it. Tabs for All, Favourites and Best shots; a grid of pictures and a detail pane with the photo, what it
 shows, its score and medal. F marks a favourite, Delete removes a photo (with a confirm), Enter saves a copy to the
-player's Pictures folder on desktop platforms.</p>
+player's Pictures folder on desktop platforms, and G raises the camera with that photo shown faintly over the view,
+to take the same shot again. Photo strips from the photo booth are in the album too.</p>
 <h3 id="from-code">From code <a class="anchor" href="#from-code" aria-label="Link to this section">#</a></h3>
 <pre><code class="language-csharp">var album = PhotoAlbum.Main;
 foreach (var photo in album.Photos) Debug.Log(photo.mainSubject + &quot; &quot; + photo.score);
@@ -126,6 +131,12 @@ album.LoadPicture(album.Photos[0], texture =&gt; myImage.texture = texture);
 </code></pre>
 <p>For a different place to keep photos (cloud saves, a database), write an <code>IPhotoStore</code> and open the album on it with
 <code>PhotoAlbum.Open(myStore)</code>. <code>MemoryPhotoStore</code> keeps everything in memory.</p>
+<h3 id="photos-in-the-world">Photos in the world <a class="anchor" href="#photos-in-the-world" aria-label="Link to this section">#</a></h3>
+<p>A <strong>Photo Display</strong> (Add Component &gt; Photoworthy &gt; Photo Display) shows one of the player's photos on an object: a
+picture frame on a wall, a pin board, a trophy case, a phone screen. Put it on anything with a renderer (a Quad works
+well) and choose what it shows: the latest photo, the best photo of a subject, the latest favourite, or the latest
+photo of a subject. It follows the album, so the frame changes when a better photo is taken, and it can stretch the
+object to the photo's own shape. The Meadow Trail demo has one on a board by the trail head.</p>
 <h2 id="the-journal">The journal <a class="anchor" href="#the-journal" aria-label="Link to this section">#</a></h2>
 <p>The journal remembers, for each kind of subject: when it was first photographed, how many photos, the best shot and
 score, and which behaviours have been seen, each with its own best shot. It also remembers which requests are done.</p>
@@ -153,7 +164,7 @@ button.</p>
 <div class="doc-pager"><a class="pager prev" href="cameras.html"><span class="label">Previous</span>Cameras, photo mode, film and lens</a><a class="pager next" href="screens.html"><span class="label">Next</span>Screens, looks, words and players&#x27; options</a></div>
 <p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Album+and+journal" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
 </article>
-<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-album">The album</a></li><li class="toc-3"><a href="#what-is-saved">What is saved</a></li><li class="toc-3"><a href="#the-album-screen">The album screen</a></li><li class="toc-3"><a href="#from-code">From code</a></li><li class="toc-2"><a href="#the-journal">The journal</a></li><li class="toc-3"><a href="#the-journal-screen">The journal screen</a></li><li class="toc-3"><a href="#saving">Saving</a></li><li class="toc-3"><a href="#from-code_1">From code</a></li><li class="toc-2"><a href="#starting-again">Starting again</a></li></ul></nav>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-album">The album</a></li><li class="toc-3"><a href="#what-is-saved">What is saved</a></li><li class="toc-3"><a href="#the-album-screen">The album screen</a></li><li class="toc-3"><a href="#from-code">From code</a></li><li class="toc-3"><a href="#photos-in-the-world">Photos in the world</a></li><li class="toc-2"><a href="#the-journal">The journal</a></li><li class="toc-3"><a href="#the-journal-screen">The journal screen</a></li><li class="toc-3"><a href="#saving">Saving</a></li><li class="toc-3"><a href="#from-code_1">From code</a></li><li class="toc-2"><a href="#starting-again">Starting again</a></li></ul></nav>
 </div>
 </main>
 <footer class="site-footer">
