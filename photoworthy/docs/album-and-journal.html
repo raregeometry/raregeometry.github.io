@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1014">
+<title>Album and journal | Rare Geometry</title>
+<meta name="description" content="Album and journal: documentation for the Photoworthy for Unity.">
+<link rel="canonical" href="https://raregeometry.github.io/photoworthy/docs/album-and-journal.html">
+<meta property="og:site_name" content="Rare Geometry">
+<meta property="og:title" content="Album and journal">
+<meta property="og:description" content="Album and journal: documentation for the Photoworthy for Unity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/album-and-journal.html">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="p-photoworthy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../../index.html" aria-label="Rare Geometry home">
+      <img src="../../assets/logo.svg" alt="" width="34" height="34">
+      <span>Rare Geometry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="../../index.html#products">Products</a></li><li><a href="../../docs/index.html" aria-current="page">Docs</a></li><li><a href="../../support/index.html">Support</a></li><li class="nav-store"><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Asset Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap docs-shell">
+<aside class="docs-side" aria-label="Documentation">
+  <div class="docs-product"><a href="index.html">Photoworthy docs</a><span class="pill">v1.0.0</span><span class="pill pill-dev">Coming soon</span></div>
+  <div class="docs-search" hidden>
+    <label class="sr-only" for="docs-q">Search the documentation</label>
+    <input id="docs-q" type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false">
+    <kbd class="docs-search-key" aria-hidden="true">/</kbd>
+    <div class="docs-results" id="docs-results" role="listbox" hidden></div>
+  </div>
+  <nav class="docs-nav"><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html" aria-current="page">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div>
+    <details><summary>All pages</summary><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html" aria-current="page">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div></details>
+  </nav>
+</aside>
+<article class="prose" id="doc">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../docs/index.html">Docs</a><span>/</span><a href="index.html">Photoworthy</a><span>/</span><span>Features</span></nav>
+<h1 id="album-and-journal">Album and journal</h1>
+<p>Two records, both optional. The <strong>album</strong> is the photos themselves. The <strong>journal</strong> is what the player has found.</p>
+<h2 id="the-album">The album <a class="anchor" href="#the-album" aria-label="Link to this section">#</a></h2>
+<p>Every kept photo becomes a real picture file plus a small record of what it shows.</p>
+<h3 id="what-is-saved">What is saved <a class="anchor" href="#what-is-saved" aria-label="Link to this section">#</a></h3>
+<p>Under Storage in the profile:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Make Pictures</td>
+<td>Off keeps only the record of what was photographed, with no image at all.</td>
+</tr>
+<tr>
+<td>Album</td>
+<td>Off means a photo only makes things happen (requests, discoveries, your events) and is not kept.</td>
+</tr>
+<tr>
+<td>Save To Disk</td>
+<td>Off keeps the album only until the game closes.</td>
+</tr>
+<tr>
+<td>Journal</td>
+<td>Fill in the journal.</td>
+</tr>
+<tr>
+<td>Folder</td>
+<td>The folder under the game's save location. Use a different one per save slot or player.</td>
+</tr>
+<tr>
+<td>Max Photos, When Full</td>
+<td>The most photos the album holds, and whether the oldest makes room or new photos are refused. Favourites and best shots are never replaced.</td>
+</tr>
+<tr>
+<td>Format, Jpg Quality</td>
+<td>JPG (small, right for almost every game) or PNG (exact, much larger).</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>How tall saved pictures are: the screen's height, or 480 to 2160 pixels.</td>
+</tr>
+<tr>
+<td>Shape</td>
+<td>Same as the screen, Square, 4:3, 3:2, 16:9, 21:9, or portrait 4:5 and 9:16. Other shapes are cut from the middle of the view, and the viewfinder shows the cut.</td>
+</tr>
+<tr>
+<td>Smooth Edges</td>
+<td>Renders at twice the size and shrinks it.</td>
+</tr>
+<tr>
+<td>Hide In Pictures</td>
+<td>Objects switched off for the instant the picture is made (a held item, your own HUD on a camera canvas).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Pictures are files in the game's own save location (<code>Application.persistentDataPath</code>), so they survive between
+sessions and are easy to back up. The list of photos is written safely: a new file first, then swapped in, with the
+previous list kept as a backup. If the list is ever lost, the album rebuilds itself from the picture files.</p>
+<p>The built-in screens never appear in the picture. A photo is a fresh render of your camera, not a screenshot.</p>
+<h3 id="the-album-screen">The album screen <a class="anchor" href="#the-album-screen" aria-label="Link to this section">#</a></h3>
+<p>Tab opens it. Tabs for All, Favourites and Best shots; a grid of pictures and a detail pane with the photo, what it
+shows, its score and medal. F marks a favourite, Delete removes a photo (with a confirm), Enter saves a copy to the
+player's Pictures folder on desktop platforms.</p>
+<h3 id="from-code">From code <a class="anchor" href="#from-code" aria-label="Link to this section">#</a></h3>
+<pre><code class="language-csharp">var album = PhotoAlbum.Main;
+foreach (var photo in album.Photos) Debug.Log(photo.mainSubject + &quot; &quot; + photo.score);
+album.LoadPicture(album.Photos[0], texture =&gt; myImage.texture = texture);
+</code></pre>
+<p>For a different place to keep photos (cloud saves, a database), write an <code>IPhotoStore</code> and open the album on it with
+<code>PhotoAlbum.Open(myStore)</code>. <code>MemoryPhotoStore</code> keeps everything in memory.</p>
+<h2 id="the-journal">The journal <a class="anchor" href="#the-journal" aria-label="Link to this section">#</a></h2>
+<p>The journal remembers, for each kind of subject: when it was first photographed, how many photos, the best shot and
+score, and which behaviours have been seen, each with its own best shot. It also remembers which requests are done.</p>
+<h3 id="the-journal-screen">The journal screen <a class="anchor" href="#the-journal-screen" aria-label="Link to this section">#</a></h3>
+<p>J opens it. One tab per section (Animals, Landmarks, your own categories) plus Requests. Subjects not found yet show
+as "?" when Secret Until Found is on. A found subject shows its best photo, description, score and medal, and its
+behaviours: seen ones by name, the rest as "Not seen yet".</p>
+<p>The order of sections and which subjects are listed come from the <strong>Photo Catalog</strong> asset (Create &gt; Photoworthy &gt;
+Catalog) on the profile.</p>
+<h3 id="saving">Saving <a class="anchor" href="#saving" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>By itself, the journal saves to a small file next to the photos, whenever it changes.</li>
+<li>With a save product that reads the shared save contract (Shipready does), the journal is part of the game's save
+  slots automatically.</li>
+<li>For your own save system: <code>PhotoJournal.Main.ToJson()</code> gives the whole journal as text, and <code>FromJson</code> reads it
+  back.</li>
+</ul>
+<h3 id="from-code_1">From code <a class="anchor" href="#from-code_1" aria-label="Link to this section">#</a></h3>
+<pre><code class="language-csharp">var journal = PhotoJournal.Main;
+if (journal.IsDiscovered(&quot;zebra&quot;)) Debug.Log(&quot;Best zebra: &quot; + journal.Entry(&quot;zebra&quot;).bestScore);
+</code></pre>
+<h2 id="starting-again">Starting again <a class="anchor" href="#starting-again" aria-label="Link to this section">#</a></h2>
+<p><code>PhotoAlbum.Main.Clear()</code> deletes every photo and <code>PhotoJournal.Main.Clear()</code> empties the journal, for a New Game
+button.</p>
+<div class="doc-pager"><a class="pager prev" href="cameras.html"><span class="label">Previous</span>Cameras, photo mode, film and lens</a><a class="pager next" href="screens.html"><span class="label">Next</span>Screens, looks, words and players&#x27; options</a></div>
+<p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Album+and+journal" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
+</article>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-album">The album</a></li><li class="toc-3"><a href="#what-is-saved">What is saved</a></li><li class="toc-3"><a href="#the-album-screen">The album screen</a></li><li class="toc-3"><a href="#from-code">From code</a></li><li class="toc-2"><a href="#the-journal">The journal</a></li><li class="toc-3"><a href="#the-journal-screen">The journal screen</a></li><li class="toc-3"><a href="#saving">Saving</a></li><li class="toc-3"><a href="#from-code_1">From code</a></li><li class="toc-2"><a href="#starting-again">Starting again</a></li></ul></nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html"><img src="../../assets/logo.svg" alt="" width="34" height="34"><span>Rare Geometry</span></a>
+        <p>Core systems, carefully built.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../shipready/index.html">Shipready</a></li>
+          <li><a href="../../bearing/index.html">Bearing</a></li>
+          <li><a href="../../snapbuild/index.html">Snapbuild</a></li>
+          <li><a href="../../interactra/index.html">Interactra</a></li>
+          <li><a href="../../responsive-fx/index.html">Responsive FX</a></li>
+          <li><a href="../../photoworthy/index.html">Photoworthy</a></li>
+          <li><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Publisher page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="../../docs/index.html">Documentation</a></li>
+          <li><a href="../../support/index.html">Troubleshooting and help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="../../support/index.html">Support</a></li>
+          <li><a href="mailto:raregeometrysupport@gmail.com">Email</a></li>
+          <li><a href="https://discord.gg/AmpBDxRAKu" rel="noopener">Discord</a></li>
+          <li><a href="https://github.com/raregeometry/Support/issues" rel="noopener">Bug tracker</a></li>
+          <li><a href="https://github.com/raregeometry" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 Rare Geometry. Unity is a trademark of Unity Technologies.</p>
+      <p>No trackers, no cookies, no analytics.</p>
+    </div>
+  </div>
+</footer>
+<script src="search-index.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

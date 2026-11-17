@@ -309,6 +309,7 @@ a.product-link:hover { border-color: var(--accent); background: var(--surface-2)
 .c-settings { --accent: var(--c-settings); }
 .c-rfx { --accent: var(--c-rfx); }
 .c-shipready { --accent: #69BAEE; }
+.c-photoworthy { --accent: #B7A0FF; }
 .c-tutorial { --accent: var(--c-tutorial); }
 .c-runtime { --accent: var(--c-runtime); }
 .c-bugreport { --accent: var(--c-bugreport); }
@@ -650,6 +651,7 @@ a.shot-frame:hover { border-color: var(--accent); }
    dark backgrounds, --pbg the flat panel its pictures sit on. */
 
 .p-shipready { --accent: #69BAEE; --pbg: #17466A; }
+.p-photoworthy { --accent: #B7A0FF; --pbg: #2B2148; }
 .p-bearing { --accent: #42D6C5; --pbg: #10514C; }
 .p-snapbuild { --accent: #FFD34F; --pbg: #1A3C86; }
 .p-interactra { --accent: #FF9B54; --pbg: #9A5226; }
@@ -672,12 +674,14 @@ a.shot-frame:hover { border-color: var(--accent); }
 .five-bar span:nth-child(3) { background: #42D6C5; }
 .five-bar span:nth-child(4) { background: #FF9B54; }
 .five-bar span:nth-child(5) { background: #FF6673; }
+.five-bar span:nth-child(6) { background: #B7A0FF; }
 .specs-center { justify-content: center; margin-top: 2rem; }
 
 /* ---------- Picture cards (home lineup, "More from Rare Geometry") ---------- */
 
 .lineup { display: grid; gap: 1rem; }
 .lineup-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.lineup-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 .lineup-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .lineup-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .pcard {
@@ -715,6 +719,10 @@ a.shot-frame:hover { border-color: var(--accent); }
   .lineup-5 > :nth-child(-n+2) .pcard-shot { aspect-ratio: 16 / 8; }
   .lineup-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* Six never leaves one alone: 6 across, then 3 + 3, then 2 + 2 + 2 */
+@media (max-width: 1280px) { .lineup-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .lineup-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 340px) { .lineup-6 { grid-template-columns: 1fr; } }
 @media (max-width: 680px) {
   .lineup-5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lineup-5 > *, .lineup-5 > :nth-child(-n+2) { grid-column: span 1; }

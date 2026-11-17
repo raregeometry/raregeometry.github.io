@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1014">
+<title>Troubleshooting and questions | Rare Geometry</title>
+<meta name="description" content="Troubleshooting and questions: documentation for the Photoworthy for Unity.">
+<link rel="canonical" href="https://raregeometry.github.io/photoworthy/docs/troubleshooting.html">
+<meta property="og:site_name" content="Rare Geometry">
+<meta property="og:title" content="Troubleshooting and questions">
+<meta property="og:description" content="Troubleshooting and questions: documentation for the Photoworthy for Unity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/troubleshooting.html">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="p-photoworthy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../../index.html" aria-label="Rare Geometry home">
+      <img src="../../assets/logo.svg" alt="" width="34" height="34">
+      <span>Rare Geometry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="../../index.html#products">Products</a></li><li><a href="../../docs/index.html" aria-current="page">Docs</a></li><li><a href="../../support/index.html">Support</a></li><li class="nav-store"><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Asset Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap docs-shell">
+<aside class="docs-side" aria-label="Documentation">
+  <div class="docs-product"><a href="index.html">Photoworthy docs</a><span class="pill">v1.0.0</span><span class="pill pill-dev">Coming soon</span></div>
+  <div class="docs-search" hidden>
+    <label class="sr-only" for="docs-q">Search the documentation</label>
+    <input id="docs-q" type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false">
+    <kbd class="docs-search-key" aria-hidden="true">/</kbd>
+    <div class="docs-results" id="docs-results" role="listbox" hidden></div>
+  </div>
+  <nav class="docs-nav"><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html" aria-current="page">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div>
+    <details><summary>All pages</summary><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html" aria-current="page">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div></details>
+  </nav>
+</aside>
+<article class="prose" id="doc">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../docs/index.html">Docs</a><span>/</span><a href="index.html">Photoworthy</a><span>/</span><span>Reference</span></nav>
+<h1 id="troubleshooting-and-questions">Troubleshooting and questions</h1>
+<p>Start with <strong>Tools &gt; Photoworthy &gt; Check Scene For Problems</strong>. It finds most setup mistakes and fixes many in one
+click. For "why this score?", use <strong>Tools &gt; Photoworthy &gt; Score Inspector</strong>.</p>
+<h2 id="nothing-happens-when-i-press-c">Nothing happens when I press C <a class="anchor" href="#nothing-happens-when-i-press-c" aria-label="Link to this section">#</a></h2>
+<ul>
+<li>Is there a Photo Camera in the scene, and does it have a Game Camera (or is your camera tagged MainCamera)?</li>
+<li>Is the handheld camera enabled in the profile, and is Built In Input on under Keys?</li>
+<li>With only the Input System active, the kit reads the same keys through it. If your project has neither input
+  system active, call <code>OpenHandheld</code> from your own code.</li>
+<li>Is the camera blocked (<code>Blocked</code>, <code>CanOpen</code>)? The Shot Refused event says why.</li>
+</ul>
+<h2 id="my-subject-is-not-recognised">My subject is not recognised <a class="anchor" href="#my-subject-is-not-recognised" aria-label="Link to this section">#</a></h2>
+<p>Open the Score Inspector and press Judge Game Camera. The subject is listed under <strong>Nearby but not counted</strong> with
+the reason:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Too far</td>
+<td>Raise Max Distance in the profile's Recognition, or on the subject.</td>
+</tr>
+<tr>
+<td>Too small</td>
+<td>Zoom in, or lower Min Picture Share.</td>
+</tr>
+<tr>
+<td>Cut off</td>
+<td>More of it must be inside the picture. Lower Min In Frame to be more forgiving.</td>
+</tr>
+<tr>
+<td>Hidden</td>
+<td>Something with a collider is in the way. Take see-through things (glass, leaves, trigger volumes are already ignored) off the Hiding Layers.</td>
+</tr>
+<tr>
+<td>Not photographable</td>
+<td>The subject's Photographable box is off, or its object is disabled.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A subject with no renderer and no collider counts as a small box at its position; give it custom points instead.</p>
+<h2 id="the-whole-subject-is-in-view-but-it-says-partly-hidden">The whole subject is in view but it says "Partly hidden" <a class="anchor" href="#the-whole-subject-is-in-view-but-it-says-partly-hidden" aria-label="Link to this section">#</a></h2>
+<p>The check casts lines to points over the subject's bounds. For an odd shape (a tree with a thin trunk, an arch) some
+of those points sit in empty air behind other things. Switch the subject's Anchor Mode to Custom and place a few
+points on the parts that matter.</p>
+<h2 id="the-score-seems-wrong-for-my-kind-of-subject">The score seems wrong for my kind of subject <a class="anchor" href="#the-score-seems-wrong-for-my-kind-of-subject" aria-label="Link to this section">#</a></h2>
+<p>Use a scoring preset that suits it (Landmark for buildings, Small Object for clues) and give it to the subject asset
+as its Scoring Override. Switch off criteria that do not apply: the others share the points.</p>
+<h2 id="the-photo-mode-has-no-blur-or-the-filters-do-nothing">The photo mode has no blur, or the filters do nothing <a class="anchor" href="#the-photo-mode-has-no-blur-or-the-filters-do-nothing" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>URP and HDRP</strong>: post processing must be on for the game camera (Rendering &gt; Post Processing on the camera in URP).</li>
+<li><strong>Built-in</strong>: the kit adds its own image effect to the camera while a screen is open. A second camera drawn on top
+  of the game camera can cover it.</li>
+</ul>
+<h2 id="my-own-hud-shows-in-photos">My own HUD shows in photos <a class="anchor" href="#my-own-hud-shows-in-photos" aria-label="Link to this section">#</a></h2>
+<p>Photos are a fresh render of the game camera, so screen-space overlay UI never appears. UI on a camera-space or
+world-space canvas does: list those objects under Storage &gt; Hide In Pictures.</p>
+<h2 id="photos-are-too-large-or-saving-stutters">Photos are too large, or saving stutters <a class="anchor" href="#photos-are-too-large-or-saving-stutters" aria-label="Link to this section">#</a></h2>
+<p>JPG at 1080 is right for almost every game. PNG files are several times larger. Reading the picture back and writing
+the file run off the main thread; if a very large size with Smooth Edges still hitches on a weak device, lower the
+Size.</p>
+<h2 id="the-album-is-empty-after-restarting">The album is empty after restarting <a class="anchor" href="#the-album-is-empty-after-restarting" aria-label="Link to this section">#</a></h2>
+<p>Is Save To Disk on in the profile's Storage? Is the Storage Folder the same as last time (a different folder per
+save slot means a different album)?</p>
+<h2 id="where-are-the-photos">Where are the photos? <a class="anchor" href="#where-are-the-photos" aria-label="Link to this section">#</a></h2>
+<p><code>Application.persistentDataPath</code>, in the profile's Storage Folder. On Windows that is under
+<code>%USERPROFILE%\AppData\LocalLow\&lt;company&gt;\&lt;product&gt;\</code>.</p>
+<h2 id="can-i-use-my-own-ui-and-still-use-the-album-and-journal-data">Can I use my own UI and still use the album and journal data? <a class="anchor" href="#can-i-use-my-own-ui-and-still-use-the-album-and-journal-data" aria-label="Link to this section">#</a></h2>
+<p>Yes. Switch off the screens you replace; the data, events and textures are all public. See
+<a href="fit-your-game.html">Fit it into your game</a>.</p>
+<h2 id="does-it-need-the-post-processing-package-cinemachine-or-textmeshpro">Does it need the Post Processing package, Cinemachine or TextMeshPro? <a class="anchor" href="#does-it-need-the-post-processing-package-cinemachine-or-textmeshpro" aria-label="Link to this section">#</a></h2>
+<p>No. There are no package dependencies. URP, HDRP and the Input System are used when present.</p>
+<h2 id="does-it-work-in-2d-or-with-an-orthographic-camera">Does it work in 2D or with an orthographic camera? <a class="anchor" href="#does-it-work-in-2d-or-with-an-orthographic-camera" aria-label="Link to this section">#</a></h2>
+<p>Recognition works with orthographic cameras and uses 3D colliders for the hidden check. For a 2D game, switch
+Check Hidden off (or put 3D colliders on what should hide things).</p>
+<h2 id="can-a-photo-be-judged-without-making-a-picture">Can a photo be judged without making a picture? <a class="anchor" href="#can-a-photo-be-judged-without-making-a-picture" aria-label="Link to this section">#</a></h2>
+<p>Yes. Switch Make Pictures off. The record of what was photographed is still made, requests still complete and the
+journal still fills.</p>
+<h2 id="can-players-cheat-by-pausing-in-the-photo-mode">Can players cheat by pausing in the photo mode? <a class="anchor" href="#can-players-cheat-by-pausing-in-the-photo-mode" aria-label="Link to this section">#</a></h2>
+<p>By default photo mode photos do not count for progress, exactly for this reason. Switch Counts For Progress on in
+the profile's Photo Mode if your game wants them to.</p>
+<h2 id="does-anything-run-when-the-camera-is-down">Does anything run when the camera is down? <a class="anchor" href="#does-anything-run-when-the-camera-is-down" aria-label="Link to this section">#</a></h2>
+<p>No. Subjects only register themselves when enabled; the viewfinder's checks run only while a camera screen is open.</p>
+<h2 id="how-do-i-remove-the-demos">How do I remove the demos? <a class="anchor" href="#how-do-i-remove-the-demos" aria-label="Link to this section">#</a></h2>
+<p>Delete the <code>Samples</code> folder.</p>
+<div class="doc-pager"><a class="pager prev" href="scripting.html"><span class="label">Previous</span>Scripting</a><a class="pager next" href="support.html"><span class="label">Next</span>Support</a></div>
+<p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Troubleshooting+and+questions" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
+</article>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#nothing-happens-when-i-press-c">Nothing happens when I press C</a></li><li class="toc-2"><a href="#my-subject-is-not-recognised">My subject is not recognised</a></li><li class="toc-2"><a href="#the-whole-subject-is-in-view-but-it-says-partly-hidden">The whole subject is in view but it says &quot;Partly hidden&quot;</a></li><li class="toc-2"><a href="#the-score-seems-wrong-for-my-kind-of-subject">The score seems wrong for my kind of subject</a></li><li class="toc-2"><a href="#the-photo-mode-has-no-blur-or-the-filters-do-nothing">The photo mode has no blur, or the filters do nothing</a></li><li class="toc-2"><a href="#my-own-hud-shows-in-photos">My own HUD shows in photos</a></li><li class="toc-2"><a href="#photos-are-too-large-or-saving-stutters">Photos are too large, or saving stutters</a></li><li class="toc-2"><a href="#the-album-is-empty-after-restarting">The album is empty after restarting</a></li><li class="toc-2"><a href="#where-are-the-photos">Where are the photos?</a></li><li class="toc-2"><a href="#can-i-use-my-own-ui-and-still-use-the-album-and-journal-data">Can I use my own UI and still use the album and journal data?</a></li><li class="toc-2"><a href="#does-it-need-the-post-processing-package-cinemachine-or-textmeshpro">Does it need the Post Processing package, Cinemachine or TextMeshPro?</a></li><li class="toc-2"><a href="#does-it-work-in-2d-or-with-an-orthographic-camera">Does it work in 2D or with an orthographic camera?</a></li><li class="toc-2"><a href="#can-a-photo-be-judged-without-making-a-picture">Can a photo be judged without making a picture?</a></li><li class="toc-2"><a href="#can-players-cheat-by-pausing-in-the-photo-mode">Can players cheat by pausing in the photo mode?</a></li><li class="toc-2"><a href="#does-anything-run-when-the-camera-is-down">Does anything run when the camera is down?</a></li><li class="toc-2"><a href="#how-do-i-remove-the-demos">How do I remove the demos?</a></li></ul></nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html"><img src="../../assets/logo.svg" alt="" width="34" height="34"><span>Rare Geometry</span></a>
+        <p>Core systems, carefully built.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../shipready/index.html">Shipready</a></li>
+          <li><a href="../../bearing/index.html">Bearing</a></li>
+          <li><a href="../../snapbuild/index.html">Snapbuild</a></li>
+          <li><a href="../../interactra/index.html">Interactra</a></li>
+          <li><a href="../../responsive-fx/index.html">Responsive FX</a></li>
+          <li><a href="../../photoworthy/index.html">Photoworthy</a></li>
+          <li><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Publisher page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="../../docs/index.html">Documentation</a></li>
+          <li><a href="../../support/index.html">Troubleshooting and help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="../../support/index.html">Support</a></li>
+          <li><a href="mailto:raregeometrysupport@gmail.com">Email</a></li>
+          <li><a href="https://discord.gg/AmpBDxRAKu" rel="noopener">Discord</a></li>
+          <li><a href="https://github.com/raregeometry/Support/issues" rel="noopener">Bug tracker</a></li>
+          <li><a href="https://github.com/raregeometry" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 Rare Geometry. Unity is a trademark of Unity Technologies.</p>
+      <p>No trackers, no cookies, no analytics.</p>
+    </div>
+  </div>
+</footer>
+<script src="search-index.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1014">
+<title>Cameras | Rare Geometry</title>
+<meta name="description" content="Cameras: documentation for the Photoworthy for Unity.">
+<link rel="canonical" href="https://raregeometry.github.io/photoworthy/docs/cameras.html">
+<meta property="og:site_name" content="Rare Geometry">
+<meta property="og:title" content="Cameras">
+<meta property="og:description" content="Cameras: documentation for the Photoworthy for Unity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/cameras.html">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="p-photoworthy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../../index.html" aria-label="Rare Geometry home">
+      <img src="../../assets/logo.svg" alt="" width="34" height="34">
+      <span>Rare Geometry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="../../index.html#products">Products</a></li><li><a href="../../docs/index.html" aria-current="page">Docs</a></li><li><a href="../../support/index.html">Support</a></li><li class="nav-store"><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Asset Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap docs-shell">
+<aside class="docs-side" aria-label="Documentation">
+  <div class="docs-product"><a href="index.html">Photoworthy docs</a><span class="pill">v1.0.0</span><span class="pill pill-dev">Coming soon</span></div>
+  <div class="docs-search" hidden>
+    <label class="sr-only" for="docs-q">Search the documentation</label>
+    <input id="docs-q" type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false">
+    <kbd class="docs-search-key" aria-hidden="true">/</kbd>
+    <div class="docs-results" id="docs-results" role="listbox" hidden></div>
+  </div>
+  <nav class="docs-nav"><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html" aria-current="page">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div>
+    <details><summary>All pages</summary><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html" aria-current="page">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div></details>
+  </nav>
+</aside>
+<article class="prose" id="doc">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../docs/index.html">Docs</a><span>/</span><a href="index.html">Photoworthy</a><span>/</span><span>Features</span></nav>
+<h1 id="cameras">Cameras</h1>
+<p>One <strong>Photo Camera</strong> component gives players two ways to take photos. Use either, both or neither (your own code can
+take photos with no camera screen at all).</p>
+<h2 id="the-photo-camera-component">The Photo Camera component <a class="anchor" href="#the-photo-camera-component" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Game Camera</td>
+<td>The camera your game renders with. Empty finds the one tagged MainCamera.</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>The Photo Profile: how photography works in your game. Empty uses a built-in profile with everything on.</td>
+</tr>
+<tr>
+<td>Handheld Viewpoint</td>
+<td>Where the handheld camera looks from, if not the game camera's own place (a third-person game puts it at the character's eyes).</td>
+</tr>
+<tr>
+<td>Pause While Open</td>
+<td>Components switched off while any camera screen is open (your shooting script).</td>
+</tr>
+<tr>
+<td>Pause In Photo Mode</td>
+<td>Components switched off while the photo mode is open (your player controller).</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>Opened, Closed, Photo Taken, Photo Kept, Photo Discarded, Photo Saved, Shot Refused.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Your game camera is borrowed, never replaced. While a screen is open the kit changes its field of view and, in the
+photo mode, its position. On closing, position, rotation, field of view and any lens effect are put back exactly.</p>
+<h2 id="the-handheld-camera">The handheld camera <a class="anchor" href="#the-handheld-camera" aria-label="Link to this section">#</a></h2>
+<p>The in-world camera, used while the game runs: raise it, zoom, take the photo. Settings are in the profile under
+Handheld.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enabled</td>
+<td>Players can raise it.</td>
+</tr>
+<tr>
+<td>Widest View, Closest Zoom</td>
+<td>The zoom range, as fields of view.</td>
+</tr>
+<tr>
+<td>Zoom Speed, Zoom Smoothing</td>
+<td>How zooming feels.</td>
+</tr>
+<tr>
+<td>Controls Look</td>
+<td>Let the kit turn the view while the camera is up. Leave off when your own controller keeps looking around.</td>
+</tr>
+<tr>
+<td>Look Speed, Steady Aim, Slow Look When Zoomed</td>
+<td>How aiming feels, with a hold-to-steady button for long lenses.</td>
+</tr>
+<tr>
+<td>World</td>
+<td>What the game does while it is up: Keep Running, Pause or Slow Motion.</td>
+</tr>
+<tr>
+<td>Counts For Progress</td>
+<td>Photos from it can be judged, complete requests and fill the journal.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-photo-mode">The photo mode <a class="anchor" href="#the-photo-mode" aria-label="Link to this section">#</a></h2>
+<p>A free camera for beautiful pictures: fly, zoom, tilt, set the lens, hide the controls, take the photo. Settings are in
+the profile under Photo Mode.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enabled</td>
+<td>Players can open it.</td>
+</tr>
+<tr>
+<td>World</td>
+<td>Pause (the default), Slow Motion or Keep Running.</td>
+</tr>
+<tr>
+<td>Move Speed, Fast Multiplier, Look Speed, Smoothing</td>
+<td>How flying feels.</td>
+</tr>
+<tr>
+<td>Travel Radius</td>
+<td>How far the camera can fly from where it started. 0 is no limit.</td>
+</tr>
+<tr>
+<td>Collide, Collision Radius, Collision Layers</td>
+<td>Stop the camera at walls and floors.</td>
+</tr>
+<tr>
+<td>Widest View, Closest Zoom, Max Tilt</td>
+<td>The lens and tilt limits.</td>
+</tr>
+<tr>
+<td>Counts For Progress</td>
+<td>Off by default, so players cannot freeze time and fly to a perfect shot. Switch on if your game wants it.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The controls panel has four tabs: <strong>Camera</strong> (zoom, tilt, guide lines), <strong>Lens</strong> (focus blur, focus distance, blur
+amount, brightness, contrast, colour), <strong>Look</strong> (filter, warmth, tint, dark corners) and <strong>Frame</strong>. Up and down pick a
+row, left and right change it; the mouse works too. H hides the controls for a clean view, R resets the lens.</p>
+<h2 id="lens-effects-in-every-pipeline">Lens effects in every pipeline <a class="anchor" href="#lens-effects-in-every-pipeline" aria-label="Link to this section">#</a></h2>
+<p>Focus blur, brightness, contrast, colour, warmth, tint and dark corners work the same in all three render pipelines,
+with nothing to set up:</p>
+<ul>
+<li><strong>Built-in</strong>: the kit's own image effect. No Post Processing package needed.</li>
+<li><strong>URP and HDRP</strong>: the kit drives a temporary Volume while a camera screen is open, and removes it on closing. Post
+  processing must be on for the camera, which is the default in new projects.</li>
+</ul>
+<p>The saved picture has the same look as the screen.</p>
+<h2 id="filters-and-frames">Filters and frames <a class="anchor" href="#filters-and-frames" aria-label="Link to this section">#</a></h2>
+<p>Seven filters (Warm, Cool, Vivid, Faded, Black and White, Sepia, Noir) and four frames (White border, Instant print,
+Black border, Film bars) are built in. Make your own with <strong>Create &gt; Photoworthy &gt; Filter</strong> and <strong>Frame</strong>, and list
+them in the profile's Filters and Frames. A frame with the Picture style uses your own artwork. Frames are drawn into
+the saved picture.</p>
+<h2 id="film-and-pace">Film and pace <a class="anchor" href="#film-and-pace" aria-label="Link to this section">#</a></h2>
+<p>Under Film in the profile:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Limited</td>
+<td>Photos use up film. Off means players can shoot for ever.</td>
+</tr>
+<tr>
+<td>Starting Shots, Max Shots</td>
+<td>How much film the camera starts with and can hold. Give more with <code>AddFilm</code>.</td>
+</tr>
+<tr>
+<td>Cooldown</td>
+<td>Seconds before the next photo.</td>
+</tr>
+<tr>
+<td>Refund Rejected</td>
+<td>Photos that are not kept give their shot back.</td>
+</tr>
+<tr>
+<td>Photo Mode Uses Film</td>
+<td>The photo mode uses film too.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="which-photos-are-kept">Which photos are kept <a class="anchor" href="#which-photos-are-kept" aria-label="Link to this section">#</a></h2>
+<p>Under Review in the profile, <strong>Keep</strong> decides: Everything, Only With A Subject, Only Good Shots, or Player Chooses
+(the result card waits for Keep or Discard). For your own rule, set the camera's <code>DecideKeep</code> in code. See
+<a href="scripting.html">Scripting</a>.</p>
+<h2 id="when-the-camera-says-no">When the camera says no <a class="anchor" href="#when-the-camera-says-no" aria-label="Link to this section">#</a></h2>
+<p>Block the camera from your game (a cutscene, a no-photo zone) with <code>Blocked = true</code>, or give it a rule with <code>CanOpen</code>
+and <code>CanShoot</code>. When a photo is refused, the Shot Refused event says why: no film, album full, not ready, or blocked.</p>
+<h2 id="keys">Keys <a class="anchor" href="#keys" aria-label="Link to this section">#</a></h2>
+<p>All keys are in the profile under Keys, with gamepad buttons added when the Input System is installed. Switch
+<strong>Built In Input</strong> off to drive everything from your own input: call <code>OpenHandheld</code>, <code>OpenPhotoMode</code>, <code>TakePhoto</code> and
+<code>Close</code>. See <a href="fit-your-game.html">Fit it into your game</a>.</p>
+<div class="doc-pager"><a class="pager prev" href="requests.html"><span class="label">Previous</span>Photo requests</a><a class="pager next" href="album-and-journal.html"><span class="label">Next</span>Album and journal</a></div>
+<p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Cameras" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
+</article>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-photo-camera-component">The Photo Camera component</a></li><li class="toc-2"><a href="#the-handheld-camera">The handheld camera</a></li><li class="toc-2"><a href="#the-photo-mode">The photo mode</a></li><li class="toc-2"><a href="#lens-effects-in-every-pipeline">Lens effects in every pipeline</a></li><li class="toc-2"><a href="#filters-and-frames">Filters and frames</a></li><li class="toc-2"><a href="#film-and-pace">Film and pace</a></li><li class="toc-2"><a href="#which-photos-are-kept">Which photos are kept</a></li><li class="toc-2"><a href="#when-the-camera-says-no">When the camera says no</a></li><li class="toc-2"><a href="#keys">Keys</a></li></ul></nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html"><img src="../../assets/logo.svg" alt="" width="34" height="34"><span>Rare Geometry</span></a>
+        <p>Core systems, carefully built.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../shipready/index.html">Shipready</a></li>
+          <li><a href="../../bearing/index.html">Bearing</a></li>
+          <li><a href="../../snapbuild/index.html">Snapbuild</a></li>
+          <li><a href="../../interactra/index.html">Interactra</a></li>
+          <li><a href="../../responsive-fx/index.html">Responsive FX</a></li>
+          <li><a href="../../photoworthy/index.html">Photoworthy</a></li>
+          <li><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Publisher page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="../../docs/index.html">Documentation</a></li>
+          <li><a href="../../support/index.html">Troubleshooting and help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="../../support/index.html">Support</a></li>
+          <li><a href="mailto:raregeometrysupport@gmail.com">Email</a></li>
+          <li><a href="https://discord.gg/AmpBDxRAKu" rel="noopener">Discord</a></li>
+          <li><a href="https://github.com/raregeometry/Support/issues" rel="noopener">Bug tracker</a></li>
+          <li><a href="https://github.com/raregeometry" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 Rare Geometry. Unity is a trademark of Unity Technologies.</p>
+      <p>No trackers, no cookies, no analytics.</p>
+    </div>
+  </div>
+</footer>
+<script src="search-index.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

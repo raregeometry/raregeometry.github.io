@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1014">
+<title>Scoring | Rare Geometry</title>
+<meta name="description" content="Scoring: documentation for the Photoworthy for Unity.">
+<link rel="canonical" href="https://raregeometry.github.io/photoworthy/docs/scoring.html">
+<meta property="og:site_name" content="Rare Geometry">
+<meta property="og:title" content="Scoring">
+<meta property="og:description" content="Scoring: documentation for the Photoworthy for Unity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/scoring.html">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="p-photoworthy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../../index.html" aria-label="Rare Geometry home">
+      <img src="../../assets/logo.svg" alt="" width="34" height="34">
+      <span>Rare Geometry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="../../index.html#products">Products</a></li><li><a href="../../docs/index.html" aria-current="page">Docs</a></li><li><a href="../../support/index.html">Support</a></li><li class="nav-store"><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Asset Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap docs-shell">
+<aside class="docs-side" aria-label="Documentation">
+  <div class="docs-product"><a href="index.html">Photoworthy docs</a><span class="pill">v1.0.0</span><span class="pill pill-dev">Coming soon</span></div>
+  <div class="docs-search" hidden>
+    <label class="sr-only" for="docs-q">Search the documentation</label>
+    <input id="docs-q" type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false">
+    <kbd class="docs-search-key" aria-hidden="true">/</kbd>
+    <div class="docs-results" id="docs-results" role="listbox" hidden></div>
+  </div>
+  <nav class="docs-nav"><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html" aria-current="page">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div>
+    <details><summary>All pages</summary><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html" aria-current="page">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div></details>
+  </nav>
+</aside>
+<article class="prose" id="doc">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../docs/index.html">Docs</a><span>/</span><a href="index.html">Photoworthy</a><span>/</span><span>Features</span></nav>
+<h1 id="scoring">Scoring</h1>
+<p>Judging photos is optional. When it is on, every point has a reason a player can read.</p>
+<h2 id="scoring-modes">Scoring modes <a class="anchor" href="#scoring-modes" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Scoring Profile</strong> asset (Create &gt; Photoworthy) has a mode:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>What a photo gets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Off</td>
+<td>Nothing. Photos are never judged.</td>
+</tr>
+<tr>
+<td>Identify Only</td>
+<td>What it shows. No points, no medals.</td>
+</tr>
+<tr>
+<td>Pass Or Fail</td>
+<td>Good enough or not, against a pass mark.</td>
+</tr>
+<tr>
+<td>Points</td>
+<td>A score from 0 to the top score, with a medal.</td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>Your own scorer asset decides.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-six-criteria">The six criteria <a class="anchor" href="#the-six-criteria" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Question it answers</th>
+<th>Default weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Framing</td>
+<td>Is the subject where it should be in the picture (centre, or on a thirds line)?</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Does it fill the right share of the picture?</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Visibility</td>
+<td>How much of it can be seen, not hidden or cut off?</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Facing</td>
+<td>Does it face the camera?</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>How rare is what it is doing?</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>What else is in the picture: other subjects, special places.</td>
+<td>5</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each criterion can be switched off; the others then share the points, so the top score stays the same. A subject
+with no front is never judged on Facing.</p>
+<h2 id="the-main-subject">The main subject <a class="anchor" href="#the-main-subject" aria-label="Link to this section">#</a></h2>
+<p>A photo can show several subjects, and each gets its own score sheet. The photo's own score is its <strong>main subject's</strong>:
+the one under the centre mark (the nearest, when several are), or otherwise the largest one near the middle. So a
+far-off landmark never takes a photo away from the animal the player aimed at. Requests about a particular subject
+always use that subject's own score.</p>
+<h2 id="medals-and-rarity">Medals and rarity <a class="anchor" href="#medals-and-rarity" aria-label="Link to this section">#</a></h2>
+<p>With points, a photo earns Bronze for any counted subject, Silver from 50% of the top score, Gold from 70% and Diamond
+from 90%. The marks are settings.</p>
+<p>Quality and rarity are kept apart on purpose. The medal says how good the photo is. The tier (1 to 4) says how rare
+the moment was. A plain photo of a rare behaviour and a perfect photo of a common one are both worth showing in the
+journal, in different ways.</p>
+<h2 id="reasons">Reasons <a class="anchor" href="#reasons" aria-label="Link to this section">#</a></h2>
+<p>Every result carries plain reasons: what held it back ("Too small", "Facing away", "Partly hidden", "Cut off",
+"Off centre") and what went well ("Well framed", "Clear view", "Rare moment"). The result card shows the most
+important ones. Switch them off with Show Hints in the profile's Review settings. All the words can be changed; see
+<a href="screens.html">Screens and looks</a>.</p>
+<h2 id="presets">Presets <a class="anchor" href="#presets" aria-label="Link to this section">#</a></h2>
+<p>Pick one in the Scoring Profile's Inspector, then adjust.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wildlife</td>
+<td>The six criteria in balance: animals and creatures.</td>
+</tr>
+<tr>
+<td>Portrait</td>
+<td>People and characters: facing and thirds framing matter most.</td>
+</tr>
+<tr>
+<td>Landmark</td>
+<td>Buildings and views: framing, size and a clear view. No front, no action.</td>
+</tr>
+<tr>
+<td>Small Object</td>
+<td>Small things: getting close and a clear view.</td>
+</tr>
+<tr>
+<td>Group Shot</td>
+<td>Several subjects together: company counts.</td>
+</tr>
+<tr>
+<td>Action Moment</td>
+<td>The right moment: what the subject is doing matters most.</td>
+</tr>
+<tr>
+<td>Identify Only</td>
+<td>No points.</td>
+</tr>
+<tr>
+<td>Pass Or Fail</td>
+<td>Good enough or not.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A subject asset can carry its own scoring asset (Scoring Override), so a landmark and an animal in the same game are
+each judged fairly.</p>
+<h2 id="the-score-inspector">The Score Inspector <a class="anchor" href="#the-score-inspector" aria-label="Link to this section">#</a></h2>
+<p><strong>Tools &gt; Photoworthy &gt; Score Inspector</strong> answers "why did this photo get that score?" without guessing.</p>
+<ul>
+<li><strong>Judge Game Camera</strong> judges what the Photo Camera's game camera sees right now. <strong>Judge Scene View</strong> judges what
+  the Scene view sees: frame a subject in the Scene view and press it.</li>
+<li>For each subject it lists every criterion with its points and reason, the numbers behind them (share of the picture,
+  share visible, facing, distance) and the points checked.</li>
+<li><strong>Nearby but not counted</strong> lists subjects that were close to counting, with the reason each did not.</li>
+</ul>
+<p>It works in Edit Mode, so you can tune a scoring asset and watch the same view change.</p>
+<h2 id="your-own-scorer">Your own scorer <a class="anchor" href="#your-own-scorer" aria-label="Link to this section">#</a></h2>
+<p>For rules no setting covers, make an asset class and set the Scoring Profile's mode to Custom:</p>
+<pre><code class="language-csharp">using System.Collections.Generic;
+using RareGeometry.Photoworthy;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = &quot;My Game/Night Scorer&quot;)]
+public class NightScorer : CustomPhotoScorer
+{
+    public override void Evaluate(PhotoContext context, IReadOnlyList&lt;SubjectSighting&gt; sightings,
+        ScoringProfile profile, PhotoEvaluation result)
+    {
+        // One score per subject in the picture; Finish picks the best as the photo's score and hands out the medal.
+        foreach (var sighting in sightings)
+        {
+            var night = context.GameTime % 600f &gt; 300f;
+            result.Subjects.Add(new SubjectScore { Sighting = sighting, Score = night ? 90f : 40f });
+        }
+        result.Finish(profile);
+    }
+}
+</code></pre>
+<p>To keep the built-in judging and only adjust the result, listen to <code>PhotoEvents.PhotoEvaluated</code> and change the photo
+there. See <a href="scripting.html">Scripting</a>.</p>
+<div class="doc-pager"><a class="pager prev" href="subjects.html"><span class="label">Previous</span>Subjects: what the camera recognises</a><a class="pager next" href="requests.html"><span class="label">Next</span>Photo requests</a></div>
+<p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Scoring" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
+</article>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#scoring-modes">Scoring modes</a></li><li class="toc-2"><a href="#the-six-criteria">The six criteria</a></li><li class="toc-2"><a href="#the-main-subject">The main subject</a></li><li class="toc-2"><a href="#medals-and-rarity">Medals and rarity</a></li><li class="toc-2"><a href="#reasons">Reasons</a></li><li class="toc-2"><a href="#presets">Presets</a></li><li class="toc-2"><a href="#the-score-inspector">The Score Inspector</a></li><li class="toc-2"><a href="#your-own-scorer">Your own scorer</a></li></ul></nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html"><img src="../../assets/logo.svg" alt="" width="34" height="34"><span>Rare Geometry</span></a>
+        <p>Core systems, carefully built.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../shipready/index.html">Shipready</a></li>
+          <li><a href="../../bearing/index.html">Bearing</a></li>
+          <li><a href="../../snapbuild/index.html">Snapbuild</a></li>
+          <li><a href="../../interactra/index.html">Interactra</a></li>
+          <li><a href="../../responsive-fx/index.html">Responsive FX</a></li>
+          <li><a href="../../photoworthy/index.html">Photoworthy</a></li>
+          <li><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Publisher page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="../../docs/index.html">Documentation</a></li>
+          <li><a href="../../support/index.html">Troubleshooting and help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="../../support/index.html">Support</a></li>
+          <li><a href="mailto:raregeometrysupport@gmail.com">Email</a></li>
+          <li><a href="https://discord.gg/AmpBDxRAKu" rel="noopener">Discord</a></li>
+          <li><a href="https://github.com/raregeometry/Support/issues" rel="noopener">Bug tracker</a></li>
+          <li><a href="https://github.com/raregeometry" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 Rare Geometry. Unity is a trademark of Unity Technologies.</p>
+      <p>No trackers, no cookies, no analytics.</p>
+    </div>
+  </div>
+</footer>
+<script src="search-index.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

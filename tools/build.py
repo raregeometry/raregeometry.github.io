@@ -652,6 +652,34 @@ PRODUCTS = [
         "shortcut_groups": {},
         "page_images": {},
     },
+    {
+        # Coming soon: page and manual up so the store description's links work. Launch day: "status": "live", "store".
+        "slug": "photoworthy",
+        "lineup": True,
+        "name": "Photoworthy",
+        "short": "Photoworthy",
+        "the": "",
+        "accent": "c-photoworthy",
+        "status": "coming soon",
+        "version": "1.0.0",
+        "store": "",
+        "summary": "A photo mode and photography gameplay in one kit: the camera knows what is in every photo, scores it "
+                   "with reasons players can read, and photos complete quests, fill a journal and an album.",
+        "requirements": ["Unity 6000.0.85f1+", "Built-in, URP & HDRP", "No dependencies", "Full C# source"],
+        "menu": "Tools > Photoworthy",
+        "support_info": "In **Tools > Photoworthy > Help and Support**, click **Copy system info**",
+        "quick_start": [
+            "Import the package. Photoworthy lands in <code>Assets/RareGeometry/Photoworthy/</code>.",
+            "Open <strong>Tools &gt; Photoworthy &gt; Photo Studio</strong>, press <strong>Add Photo Camera</strong> and "
+            "pick a starting point.",
+            "Select any objects and press <strong>Make Selected Photographable</strong>.",
+            "Press Play: <kbd>C</kbd> raises the camera, <kbd>Space</kbd> takes the photo, <kbd>Tab</kbd> opens the album.",
+        ],
+        # Its Documentation/docs.json sets the sidebar groups, order and titles.
+        "pages": [],
+        "shortcut_groups": {},
+        "page_images": {},
+    },
 ]
 
 # Kits without docs yet, for the docs hub and "More from Rare Geometry": (name, accent, status, one line)
@@ -764,6 +792,15 @@ LINEUP_ART = {
         "main_alt": "A knight striking a pane of glass, which cracks and sprays shards",
         "inset_alt": "Impact Lab: a grid of surfaces against contacts",
     },
+    "photoworthy": {
+        "line": "Photo mode, photography gameplay and photo quests",
+        "tagline": "Every photo means something.",
+        "ticks": ["The camera knows what is in every photo, and what is hidden",
+                  "Scores with reasons players can read, photo quests and a journal",
+                  "A photo mode with the same lens effects in every render pipeline"],
+        "main_alt": "The journal made with Photoworthy: a best photo for each animal found and the behaviours seen",
+        "inset_alt": "The Score Inspector listing why a view of a horse scores what it does",
+    },
 }
 
 
@@ -828,7 +865,7 @@ def product_card(root, p, heading="h3", lazy=True):
 
 
 def product_cards(root):
-    """The home page's product cards, five across: the lineup first, then anything else still current."""
+    """The home page's product cards, six across: the lineup first, then anything else still current."""
     return "\n      ".join(product_card(root, p, lazy=False) for p in lineup_order())
 
 
@@ -1350,6 +1387,11 @@ HAND_PAGES = [
      "Game feel for every hit, step and impact in Unity: damage numbers, hitstop and shake, footsteps and footprints, "
      "bullet marks, physics impacts and AI hearing, tuned in one window. Play the demo in your browser. Coming soon to "
      "the Unity Asset Store."),
+    ("photoworthy.html", "photoworthy/index.html", "../", "",
+     "Photoworthy",
+     "A photo mode and photography gameplay for Unity: the camera knows what is in every photo, scores it with "
+     "reasons players can read, and photos complete quests, fill a journal and an album. Built-in, URP and HDRP. "
+     "Coming soon to the Unity Asset Store."),
     ("support.html", "support/index.html", "../", "support",
      "Support",
      "Get help with Rare Geometry tools: documentation, bug reports, Discord and email."),

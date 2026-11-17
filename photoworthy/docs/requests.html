@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1014">
+<title>Photo requests | Rare Geometry</title>
+<meta name="description" content="Photo requests: documentation for the Photoworthy for Unity.">
+<link rel="canonical" href="https://raregeometry.github.io/photoworthy/docs/requests.html">
+<meta property="og:site_name" content="Rare Geometry">
+<meta property="og:title" content="Photo requests">
+<meta property="og:description" content="Photo requests: documentation for the Photoworthy for Unity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/requests.html">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="p-photoworthy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../../index.html" aria-label="Rare Geometry home">
+      <img src="../../assets/logo.svg" alt="" width="34" height="34">
+      <span>Rare Geometry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="../../index.html#products">Products</a></li><li><a href="../../docs/index.html" aria-current="page">Docs</a></li><li><a href="../../support/index.html">Support</a></li><li class="nav-store"><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Asset Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap docs-shell">
+<aside class="docs-side" aria-label="Documentation">
+  <div class="docs-product"><a href="index.html">Photoworthy docs</a><span class="pill">v1.0.0</span><span class="pill pill-dev">Coming soon</span></div>
+  <div class="docs-search" hidden>
+    <label class="sr-only" for="docs-q">Search the documentation</label>
+    <input id="docs-q" type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false">
+    <kbd class="docs-search-key" aria-hidden="true">/</kbd>
+    <div class="docs-results" id="docs-results" role="listbox" hidden></div>
+  </div>
+  <nav class="docs-nav"><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html" aria-current="page">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div>
+    <details><summary>All pages</summary><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html" aria-current="page">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div></details>
+  </nav>
+</aside>
+<article class="prose" id="doc">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../docs/index.html">Docs</a><span>/</span><a href="index.html">Photoworthy</a><span>/</span><span>Features</span></nav>
+<h1 id="photo-requests">Photo requests</h1>
+<p>A photo request is a quest for a photo: "photograph the horse", "catch any animal mid-jump", "a zebra at the pond".
+Requests are assets built from rules, with no code. They are optional: photos work without them.</p>
+<h2 id="make-one">Make one <a class="anchor" href="#make-one" aria-label="Link to this section">#</a></h2>
+<p>Select a photographable object, open <strong>Tools &gt; Photoworthy &gt; Photo Studio</strong>, the <strong>Requests</strong> tab, and press a
+template: <strong>Photograph It</strong>, <strong>A Good Shot</strong>, <strong>Doing Something</strong>, <strong>At A Place</strong> or <strong>Two Together</strong>. The new
+request is added to the catalog and selected so you can change it.</p>
+<p>Or make one by hand: <strong>Create &gt; Photoworthy &gt; Photo Request</strong>, then add it to the Photo Catalog's Requests list.</p>
+<h2 id="the-request-asset">The request asset <a class="anchor" href="#the-request-asset" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Id</td>
+<td>The key saved in the journal. Keep it once players have saves.</td>
+</tr>
+<tr>
+<td>Title, Description</td>
+<td>What players read in the journal's Requests tab.</td>
+</tr>
+<tr>
+<td>Reward</td>
+<td>A line of words shown with the request. Hand out the real reward from the completed event.</td>
+</tr>
+<tr>
+<td>Rule lists</td>
+<td>One or more lists of rules. Inside a list, choose All (every rule) or Any (at least one). Between lists, choose All or Any again. That gives AND and OR with no code.</td>
+</tr>
+<tr>
+<td>Offered From Start</td>
+<td>On offer as soon as the game starts. Off waits for your code or an event to offer it.</td>
+</tr>
+<tr>
+<td>Repeatable</td>
+<td>Can be completed again and again.</td>
+</tr>
+<tr>
+<td>Show Rules</td>
+<td>Lists the rules under the description, each with a tick as a photo meets it.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-18-rules">The 18 rules <a class="anchor" href="#the-18-rules" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Passes when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shows Subject</td>
+<td>The photo shows the subject (at least Count of them). With no subject chosen: any subject.</td>
+</tr>
+<tr>
+<td>Shows Category</td>
+<td>It shows subjects from a journal section, such as Animals.</td>
+</tr>
+<tr>
+<td>Shows Tag</td>
+<td>It shows subjects with a tag, such as "bird".</td>
+</tr>
+<tr>
+<td>Subject Is Doing</td>
+<td>A subject is doing something (the behaviour key). With no subject chosen: any subject.</td>
+</tr>
+<tr>
+<td>Shows Detail</td>
+<td>A named detail of a subject shows (a face, a plate).</td>
+</tr>
+<tr>
+<td>Different Subjects Together</td>
+<td>At least Count different kinds of subject are in the photo.</td>
+</tr>
+<tr>
+<td>Score At Least</td>
+<td>The score reaches a share of the top score.</td>
+</tr>
+<tr>
+<td>Medal At Least</td>
+<td>The photo earned at least this medal.</td>
+</tr>
+<tr>
+<td>Rarity At Least</td>
+<td>The behaviour seen is at least this rare (tier 1 to 4).</td>
+</tr>
+<tr>
+<td>Subject Visible At Least</td>
+<td>At least this much of the subject can be seen.</td>
+</tr>
+<tr>
+<td>Subject Fills At Least</td>
+<td>The subject fills at least this much of the picture.</td>
+</tr>
+<tr>
+<td>Subject Faces Camera</td>
+<td>The subject faces the camera.</td>
+</tr>
+<tr>
+<td>Camera In Place</td>
+<td>The camera stood inside a Photo Region.</td>
+</tr>
+<tr>
+<td>Subject In Place</td>
+<td>The subject was inside a Photo Region.</td>
+</tr>
+<tr>
+<td>Data Equals</td>
+<td>One of your own values on the photo or subject equals something.</td>
+</tr>
+<tr>
+<td>Taken With</td>
+<td>The photo came from the handheld camera, the photo mode or a script.</td>
+</tr>
+<tr>
+<td>Subject Within Distance</td>
+<td>The subject is within a number of metres.</td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>Your own rule asset decides.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every rule has a <strong>Not</strong> box that turns it round ("no guard in the picture"), and a <strong>Words</strong> box for your own
+sentence when the automatic one does not read well.</p>
+<h2 id="what-players-see">What players see <a class="anchor" href="#what-players-see" aria-label="Link to this section">#</a></h2>
+<p>The journal's Requests tab lists each request on offer with its title, description, reward and, when Show Rules is
+on, its rules. When a kept photo meets a request, it completes: a notice shows, the journal marks it done, and
+<code>RequestCompleted</code> is raised. The result card lists the requests a photo completed.</p>
+<h2 id="offer-and-withdraw">Offer and withdraw <a class="anchor" href="#offer-and-withdraw" aria-label="Link to this section">#</a></h2>
+<p>Requests marked Offered From Start in the camera's catalog are on offer at once. For the rest:</p>
+<pre><code class="language-csharp">PhotoRequests.Offer(request);      // put it on offer (from a quest giver, a story beat)
+PhotoRequests.Withdraw(request);   // take it off again
+</code></pre>
+<p>Both can be called from a UnityEvent through a small script of your own, or from a Photo Trigger.</p>
+<h2 id="react-to-a-completed-request">React to a completed request <a class="anchor" href="#react-to-a-completed-request" aria-label="Link to this section">#</a></h2>
+<p>With no code: add a <strong>Photo Trigger</strong> component, set When to <strong>Request Completed</strong>, pick the request, and wire its
+event (open a gate, give a reward, start a dialogue).</p>
+<p>In code:</p>
+<pre><code class="language-csharp">PhotoEvents.RequestCompleted += (request, photo) =&gt; Debug.Log(request.Title + &quot; done with &quot; + photo.id);
+</code></pre>
+<h2 id="your-own-rule">Your own rule <a class="anchor" href="#your-own-rule" aria-label="Link to this section">#</a></h2>
+<pre><code class="language-csharp">using RareGeometry.Photoworthy;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = &quot;My Game/Rule: At Night&quot;)]
+public class AtNightRule : CustomPhotoRule
+{
+    public override bool Passes(Photo photo, PhotoContext context) =&gt; photo.GetData(&quot;time&quot;) == &quot;night&quot;;
+    public override string Describe() =&gt; &quot;Taken at night&quot;;
+}
+</code></pre>
+<p>Set a rule's kind to Custom and give it the asset. Stamp your own values on photos with the Photo Camera's
+<code>SetStamp("time", "night")</code>.</p>
+<div class="doc-pager"><a class="pager prev" href="scoring.html"><span class="label">Previous</span>Scoring and the Score Inspector</a><a class="pager next" href="cameras.html"><span class="label">Next</span>Cameras, photo mode, film and lens</a></div>
+<p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Photo+requests" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
+</article>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#make-one">Make one</a></li><li class="toc-2"><a href="#the-request-asset">The request asset</a></li><li class="toc-2"><a href="#the-18-rules">The 18 rules</a></li><li class="toc-2"><a href="#what-players-see">What players see</a></li><li class="toc-2"><a href="#offer-and-withdraw">Offer and withdraw</a></li><li class="toc-2"><a href="#react-to-a-completed-request">React to a completed request</a></li><li class="toc-2"><a href="#your-own-rule">Your own rule</a></li></ul></nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html"><img src="../../assets/logo.svg" alt="" width="34" height="34"><span>Rare Geometry</span></a>
+        <p>Core systems, carefully built.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../shipready/index.html">Shipready</a></li>
+          <li><a href="../../bearing/index.html">Bearing</a></li>
+          <li><a href="../../snapbuild/index.html">Snapbuild</a></li>
+          <li><a href="../../interactra/index.html">Interactra</a></li>
+          <li><a href="../../responsive-fx/index.html">Responsive FX</a></li>
+          <li><a href="../../photoworthy/index.html">Photoworthy</a></li>
+          <li><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Publisher page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="../../docs/index.html">Documentation</a></li>
+          <li><a href="../../support/index.html">Troubleshooting and help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="../../support/index.html">Support</a></li>
+          <li><a href="mailto:raregeometrysupport@gmail.com">Email</a></li>
+          <li><a href="https://discord.gg/AmpBDxRAKu" rel="noopener">Discord</a></li>
+          <li><a href="https://github.com/raregeometry/Support/issues" rel="noopener">Bug tracker</a></li>
+          <li><a href="https://github.com/raregeometry" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 Rare Geometry. Unity is a trademark of Unity Technologies.</p>
+      <p>No trackers, no cookies, no analytics.</p>
+    </div>
+  </div>
+</footer>
+<script src="search-index.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1014">
+<title>Quick start | Rare Geometry</title>
+<meta name="description" content="Quick start: documentation for the Photoworthy for Unity.">
+<link rel="canonical" href="https://raregeometry.github.io/photoworthy/docs/getting-started.html">
+<meta property="og:site_name" content="Rare Geometry">
+<meta property="og:title" content="Quick start">
+<meta property="og:description" content="Quick start: documentation for the Photoworthy for Unity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/getting-started.html">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="p-photoworthy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../../index.html" aria-label="Rare Geometry home">
+      <img src="../../assets/logo.svg" alt="" width="34" height="34">
+      <span>Rare Geometry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="../../index.html#products">Products</a></li><li><a href="../../docs/index.html" aria-current="page">Docs</a></li><li><a href="../../support/index.html">Support</a></li><li class="nav-store"><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Asset Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap docs-shell">
+<aside class="docs-side" aria-label="Documentation">
+  <div class="docs-product"><a href="index.html">Photoworthy docs</a><span class="pill">v1.0.0</span><span class="pill pill-dev">Coming soon</span></div>
+  <div class="docs-search" hidden>
+    <label class="sr-only" for="docs-q">Search the documentation</label>
+    <input id="docs-q" type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false">
+    <kbd class="docs-search-key" aria-hidden="true">/</kbd>
+    <div class="docs-results" id="docs-results" role="listbox" hidden></div>
+  </div>
+  <nav class="docs-nav"><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html" aria-current="page">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div>
+    <details><summary>All pages</summary><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html" aria-current="page">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div></details>
+  </nav>
+</aside>
+<article class="prose" id="doc">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../docs/index.html">Docs</a><span>/</span><a href="index.html">Photoworthy</a><span>/</span><span>Start here</span></nav>
+<h1 id="quick-start">Quick start</h1>
+<p>A first photo in your own scene in about five minutes. No code.</p>
+<h2 id="1-add-the-camera">1. Add the camera <a class="anchor" href="#1-add-the-camera" aria-label="Link to this section">#</a></h2>
+<p>Open <strong>Tools &gt; Photoworthy &gt; Photo Studio</strong>. On the <strong>Start</strong> tab press <strong>Add Photo Camera</strong>.</p>
+<p>A Photo Camera appears in the scene, pointed at your game's main camera. Your camera is only borrowed: while a photo
+screen is open the kit zooms and moves it, and when the screen closes everything is put back exactly as it was.</p>
+<h2 id="2-pick-how-it-plays">2. Pick how it plays <a class="anchor" href="#2-pick-how-it-plays" aria-label="Link to this section">#</a></h2>
+<p>Still on the Start tab, choose a <strong>Starting point</strong> (Wildlife Discovery is a good first one) and press
+<strong>Create Profile</strong>. A Photo Profile, a scoring asset and a catalog are made in <code>Assets/RareGeometryData/Photoworthy</code>
+and given to the camera. Every setting can be changed afterwards; nothing is locked.</p>
+<h2 id="3-make-something-photographable">3. Make something photographable <a class="anchor" href="#3-make-something-photographable" aria-label="Link to this section">#</a></h2>
+<p>Select one or more objects in the Hierarchy (an animal, a statue, a door, a character) and press
+<strong>Make Selected Photographable</strong>, on the Start tab or in <strong>Tools &gt; Photoworthy</strong>.</p>
+<p>Each object gets a <strong>Photo Subject</strong> component and a small subject asset named after it ("SM_Red_Fox_01" becomes
+"Red Fox"). Objects that share a subject asset count as the same kind of thing.</p>
+<h2 id="4-press-play">4. Press Play <a class="anchor" href="#4-press-play" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>Raise and put away the handheld camera</td>
+</tr>
+<tr>
+<td>Mouse wheel</td>
+<td>Zoom</td>
+</tr>
+<tr>
+<td>Space or left mouse button</td>
+<td>Take the photo</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>Album</td>
+</tr>
+<tr>
+<td>J</td>
+<td>Journal and requests</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Photo mode</td>
+</tr>
+<tr>
+<td>O</td>
+<td>Options</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>Back</td>
+</tr>
+</tbody>
+</table></div>
+<p>With a gamepad (Input System installed): D-pad up raises the camera, RT takes the photo, LB and RB zoom, D-pad left
+and right open the album and journal, D-pad down opens the photo mode.</p>
+<p>Raise the camera, point it at your subject and take a photo. The result card shows the photo, what it shows, its score
+and why.</p>
+<h2 id="5-add-a-photo-request-optional">5. Add a photo request (optional) <a class="anchor" href="#5-add-a-photo-request-optional" aria-label="Link to this section">#</a></h2>
+<p>Select a photographable object, open the <strong>Requests</strong> tab and press one of the buttons: <strong>Photograph It</strong>,
+<strong>A Good Shot</strong>, <strong>Doing Something</strong>, <strong>At A Place</strong> or <strong>Two Together</strong>. The request is added to the catalog and
+shows in the journal's Requests tab while playing. Take a photo that meets it and it completes.</p>
+<h2 id="something-not-working">Something not working? <a class="anchor" href="#something-not-working" aria-label="Link to this section">#</a></h2>
+<p>Open <strong>Tools &gt; Photoworthy &gt; Check Scene For Problems</strong>. It lists what is missing or contradictory in plain words,
+most with a one-click fix. To see exactly why a view would score what it does, open
+<strong>Tools &gt; Photoworthy &gt; Score Inspector</strong> and press <strong>Judge Game Camera</strong> or <strong>Judge Scene View</strong>. It works before
+you press Play.</p>
+<h2 id="want-to-see-everything-working-first">Want to see everything working first? <a class="anchor" href="#want-to-see-everything-working-first" aria-label="Link to this section">#</a></h2>
+<p><strong>Tools &gt; Photoworthy &gt; Open Demo &gt; Meadow Trail</strong> is a small wildlife trail with animals, landmarks, six requests
+and a journal. <strong>Creator Lab</strong> has one station for each idea. See <a href="samples.html">Demo scenes</a>.</p>
+<div class="doc-pager"><a class="pager prev" href="index.html"><span class="label">Previous</span>Overview</a><a class="pager next" href="samples.html"><span class="label">Next</span>Demo scenes</a></div>
+<p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Quick+start" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
+</article>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#1-add-the-camera">1. Add the camera</a></li><li class="toc-2"><a href="#2-pick-how-it-plays">2. Pick how it plays</a></li><li class="toc-2"><a href="#3-make-something-photographable">3. Make something photographable</a></li><li class="toc-2"><a href="#4-press-play">4. Press Play</a></li><li class="toc-2"><a href="#5-add-a-photo-request-optional">5. Add a photo request (optional)</a></li><li class="toc-2"><a href="#something-not-working">Something not working?</a></li><li class="toc-2"><a href="#want-to-see-everything-working-first">Want to see everything working first?</a></li></ul></nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html"><img src="../../assets/logo.svg" alt="" width="34" height="34"><span>Rare Geometry</span></a>
+        <p>Core systems, carefully built.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../shipready/index.html">Shipready</a></li>
+          <li><a href="../../bearing/index.html">Bearing</a></li>
+          <li><a href="../../snapbuild/index.html">Snapbuild</a></li>
+          <li><a href="../../interactra/index.html">Interactra</a></li>
+          <li><a href="../../responsive-fx/index.html">Responsive FX</a></li>
+          <li><a href="../../photoworthy/index.html">Photoworthy</a></li>
+          <li><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Publisher page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="../../docs/index.html">Documentation</a></li>
+          <li><a href="../../support/index.html">Troubleshooting and help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="../../support/index.html">Support</a></li>
+          <li><a href="mailto:raregeometrysupport@gmail.com">Email</a></li>
+          <li><a href="https://discord.gg/AmpBDxRAKu" rel="noopener">Discord</a></li>
+          <li><a href="https://github.com/raregeometry/Support/issues" rel="noopener">Bug tracker</a></li>
+          <li><a href="https://github.com/raregeometry" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 Rare Geometry. Unity is a trademark of Unity Technologies.</p>
+      <p>No trackers, no cookies, no analytics.</p>
+    </div>
+  </div>
+</footer>
+<script src="search-index.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

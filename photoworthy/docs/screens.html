@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1014">
+<title>Screens and looks | Rare Geometry</title>
+<meta name="description" content="Screens and looks: documentation for the Photoworthy for Unity.">
+<link rel="canonical" href="https://raregeometry.github.io/photoworthy/docs/screens.html">
+<meta property="og:site_name" content="Rare Geometry">
+<meta property="og:title" content="Screens and looks">
+<meta property="og:description" content="Screens and looks: documentation for the Photoworthy for Unity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/screens.html">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="p-photoworthy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../../index.html" aria-label="Rare Geometry home">
+      <img src="../../assets/logo.svg" alt="" width="34" height="34">
+      <span>Rare Geometry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="../../index.html#products">Products</a></li><li><a href="../../docs/index.html" aria-current="page">Docs</a></li><li><a href="../../support/index.html">Support</a></li><li class="nav-store"><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Asset Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap docs-shell">
+<aside class="docs-side" aria-label="Documentation">
+  <div class="docs-product"><a href="index.html">Photoworthy docs</a><span class="pill">v1.0.0</span><span class="pill pill-dev">Coming soon</span></div>
+  <div class="docs-search" hidden>
+    <label class="sr-only" for="docs-q">Search the documentation</label>
+    <input id="docs-q" type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false">
+    <kbd class="docs-search-key" aria-hidden="true">/</kbd>
+    <div class="docs-results" id="docs-results" role="listbox" hidden></div>
+  </div>
+  <nav class="docs-nav"><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html" aria-current="page">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div>
+    <details><summary>All pages</summary><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html" aria-current="page">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div></details>
+  </nav>
+</aside>
+<article class="prose" id="doc">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../docs/index.html">Docs</a><span>/</span><a href="index.html">Photoworthy</a><span>/</span><span>Features</span></nav>
+<h1 id="screens-and-looks">Screens and looks</h1>
+<p>Everything players see is built in, works with keyboard, mouse and gamepad, and can be restyled, reworded or switched
+off piece by piece.</p>
+<h2 id="the-screens">The screens <a class="anchor" href="#the-screens" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Screen</th>
+<th>When</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Viewfinder</td>
+<td>While a camera is up</td>
+<td>Corner brackets, a centre mark, optional guide lines, the zoom, film left, the current request, and a mark on each subject the camera would recognise. When photos are a different shape from the screen, the part that will be cut off is dimmed.</td>
+</tr>
+<tr>
+<td>Result card</td>
+<td>After a shot</td>
+<td>The photo, what it shows, the score and medal, the points for each criterion, the main reasons, new discoveries and completed requests. With Player Chooses, it waits for Keep or Discard.</td>
+</tr>
+<tr>
+<td>Notices</td>
+<td>Any time</td>
+<td>Short messages such as "New discovery" when the result card is not showing.</td>
+</tr>
+<tr>
+<td>Photo mode controls</td>
+<td>In the photo mode</td>
+<td>Four tabs of rows: Camera, Lens, Look, Frame.</td>
+</tr>
+<tr>
+<td>Album</td>
+<td>Tab</td>
+<td>A grid of photos and a detail pane. Favourites, delete, save a copy.</td>
+</tr>
+<tr>
+<td>Journal</td>
+<td>J</td>
+<td>Subjects by section with best shots and behaviours, and the Requests tab.</td>
+</tr>
+<tr>
+<td>Options</td>
+<td>O</td>
+<td>The players' own settings.</td>
+</tr>
+<tr>
+<td>Key hints</td>
+<td>On every screen</td>
+<td>The keys or gamepad buttons for what can be done right now. They follow the device in use.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Switch each one on or off in the profile under <strong>Screens</strong>. With all of them off the kit draws nothing: listen to
+the camera's events and build your own UI. See <a href="fit-your-game.html">Fit it into your game</a>.</p>
+<p>Other switches there: name subjects in the viewfinder only once photographed, guide lines, open the album and journal
+only while the camera is up, pause the game while a full-screen screen is open, free the mouse cursor while a screen
+needs it, the shutter flash and the shutter sound.</p>
+<h2 id="looks">Looks <a class="anchor" href="#looks" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Photo Look</strong> asset holds every colour, corner, line thickness, the font, text size, title capitals and motion
+time. Three are built in:</p>
+<ul>
+<li><strong>Field Journal</strong>: warm paper, ink text, a rust accent, photos as prints.</li>
+<li><strong>Modern Viewfinder</strong>: dark glass, light text, an amber accent.</li>
+<li><strong>Instant Print</strong>: white cards, round corners, a coral accent, thick print borders.</li>
+</ul>
+<p>Make your own with <strong>Create &gt; Photoworthy &gt; Look</strong>, start from one of the three in its Inspector, change anything, and
+give it to the profile. A look can be swapped while the game runs:</p>
+<pre><code class="language-csharp">photoCamera.GetComponent&lt;PhotoScreens&gt;().LookOverride = nightLook;
+</code></pre>
+<p>In the demos, L cycles the three looks.</p>
+<p>The kit ships no fonts. Give a look your own font, or it uses Unity's built-in one.</p>
+<h2 id="words">Words <a class="anchor" href="#words" aria-label="Link to this section">#</a></h2>
+<p>Every word players read comes from one table, so the screens can be reworded or translated without touching code.</p>
+<ul>
+<li><strong>Create &gt; Photoworthy &gt; Text Table</strong>, add rows (a key and your words), and give it to the profile. Rows you leave
+  out keep the built-in English. <strong>Add Every Key</strong> in the table's Inspector adds a row for every key with its
+  English words, ready to reword or translate.</li>
+<li>For a localisation system, set <code>PhotoText.Translate</code> to a function that receives a key and the English words and
+  returns yours.</li>
+<li>From code: <code>PhotoText.Set("result.newDiscovery", "First sighting!")</code>.</li>
+</ul>
+<p>Subject names, descriptions, behaviour names and request words are on their own assets.</p>
+<h2 id="players-options">Players' options <a class="anchor" href="#players-options" aria-label="Link to this section">#</a></h2>
+<p>The options screen lets players set things for themselves. You choose what is offered.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera</td>
+<td>Look speed, invert look</td>
+</tr>
+<tr>
+<td>Screen</td>
+<td>Guide lines, subject marks, key hints, shutter flash</td>
+</tr>
+<tr>
+<td>Sound</td>
+<td>Camera sounds volume</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>Text size, reduced motion, high contrast</td>
+</tr>
+</tbody>
+</table></div>
+<p>With nothing set up, every option is offered. To decide yourself, <strong>Create &gt; Photoworthy &gt; Player Options</strong>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Defaults</td>
+<td>What every option starts at, and what Reset goes back to.</td>
+</tr>
+<tr>
+<td>Limits</td>
+<td>How far the look speed and text size sliders move.</td>
+</tr>
+<tr>
+<td>Camera, Screen, Sound, Accessibility Options</td>
+<td>Which groups the screen offers. An option that is not offered always follows your default.</td>
+</tr>
+<tr>
+<td>Remember</td>
+<td>Keep the player's choices between sessions on this device.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three starting points: Standard, Simple (sound and accessibility only) and Accessible (wide ranges, larger text).
+Give the asset to the profile's Player Options. Switch the whole screen off in Screens.</p>
+<p>To offer the same options in your own menu:</p>
+<pre><code class="language-csharp">PhotoPlayerSettings.Current.guideLines = true;
+PhotoPlayerSettings.Apply();
+</code></pre>
+<p>Or open the built-in screen from your pause menu: <code>photoCamera.GetComponent&lt;PhotoScreens&gt;().OpenOptions()</code>.</p>
+<h2 id="accessibility">Accessibility <a class="anchor" href="#accessibility" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>Text size</strong> scales every word on every screen.</li>
+<li><strong>Reduced motion</strong> makes panels and cards appear at once.</li>
+<li><strong>High contrast</strong> draws solid panels, plain black or white text and thicker lines, whatever the look.</li>
+<li><strong>Shutter flash</strong> can be switched off.</li>
+<li>Every screen works without a mouse: arrows or D-pad to move, Enter or A to press, Esc or B to back out.</li>
+<li>Results are never told by colour alone: medals have names, reasons are words.</li>
+</ul>
+<p>These also follow the shared accessibility settings that every Rare Geometry product reads, so a settings product
+(Shipready) or your own code can set them once for the whole game:</p>
+<pre><code class="language-csharp">RareGeometry.Core.Accessibility.Defaults.ReducedMotion = true;
+</code></pre>
+<h2 id="sounds">Sounds <a class="anchor" href="#sounds" aria-label="Link to this section">#</a></h2>
+<p>The shutter, a chime for discoveries, a blip when the camera says no and a tick in menus are made by the kit, with
+no audio files. Replace any of them with your own clip, and set the volume, in the profile under Sounds.</p>
+<h2 id="your-own-panel-settings">Your own panel settings <a class="anchor" href="#your-own-panel-settings" aria-label="Link to this section">#</a></h2>
+<p>The Photo Screens component (added to the camera automatically) has a Sorting Order, so the screens draw above or
+below your other UI Toolkit panels, and a slot for your own Panel Settings.</p>
+<div class="doc-pager"><a class="pager prev" href="album-and-journal.html"><span class="label">Previous</span>Album and journal</a><a class="pager next" href="scripting.html"><span class="label">Next</span>Scripting</a></div>
+<p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Screens+and+looks" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
+</article>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-screens">The screens</a></li><li class="toc-2"><a href="#looks">Looks</a></li><li class="toc-2"><a href="#words">Words</a></li><li class="toc-2"><a href="#players-options">Players&#x27; options</a></li><li class="toc-2"><a href="#accessibility">Accessibility</a></li><li class="toc-2"><a href="#sounds">Sounds</a></li><li class="toc-2"><a href="#your-own-panel-settings">Your own panel settings</a></li></ul></nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html"><img src="../../assets/logo.svg" alt="" width="34" height="34"><span>Rare Geometry</span></a>
+        <p>Core systems, carefully built.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../shipready/index.html">Shipready</a></li>
+          <li><a href="../../bearing/index.html">Bearing</a></li>
+          <li><a href="../../snapbuild/index.html">Snapbuild</a></li>
+          <li><a href="../../interactra/index.html">Interactra</a></li>
+          <li><a href="../../responsive-fx/index.html">Responsive FX</a></li>
+          <li><a href="../../photoworthy/index.html">Photoworthy</a></li>
+          <li><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Publisher page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="../../docs/index.html">Documentation</a></li>
+          <li><a href="../../support/index.html">Troubleshooting and help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="../../support/index.html">Support</a></li>
+          <li><a href="mailto:raregeometrysupport@gmail.com">Email</a></li>
+          <li><a href="https://discord.gg/AmpBDxRAKu" rel="noopener">Discord</a></li>
+          <li><a href="https://github.com/raregeometry/Support/issues" rel="noopener">Bug tracker</a></li>
+          <li><a href="https://github.com/raregeometry" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 Rare Geometry. Unity is a trademark of Unity Technologies.</p>
+      <p>No trackers, no cookies, no analytics.</p>
+    </div>
+  </div>
+</footer>
+<script src="search-index.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

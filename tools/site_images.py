@@ -33,6 +33,11 @@ CROPS = {
         "main": ("snapbuild/02-prefabs.jpg", (0.040, 0.202, 0.747, 0.905)),
         "inset": ("snapbuild/02-prefabs.jpg", (0.771, 0.2, 0.965, 0.716)),
     },
+    "photoworthy": {
+        "card": ("photoworthy/hero.jpg", (0, 0, 1, 1)),
+        "main": ("photoworthy/journal.jpg", (0.06, 0.07, 0.94, 0.93)),
+        "inset": ("photoworthy/score-inspector.jpg", (0.686, 0.025, 0.985, 0.973)),
+    },
     "interactra": {
         "card": ("interactra/01-hero.jpg", (0, 0, 1, 1)),
         "main": ("interactra/02-build.jpg", (0, 0, 1, 1)),

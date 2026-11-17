@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1014">
+<title>Scripting | Rare Geometry</title>
+<meta name="description" content="Scripting: documentation for the Photoworthy for Unity.">
+<link rel="canonical" href="https://raregeometry.github.io/photoworthy/docs/scripting.html">
+<meta property="og:site_name" content="Rare Geometry">
+<meta property="og:title" content="Scripting">
+<meta property="og:description" content="Scripting: documentation for the Photoworthy for Unity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raregeometry.github.io/photoworthy/docs/scripting.html">
+<meta property="og:image" content="https://raregeometry.github.io/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="p-photoworthy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../../index.html" aria-label="Rare Geometry home">
+      <img src="../../assets/logo.svg" alt="" width="34" height="34">
+      <span>Rare Geometry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="../../index.html#products">Products</a></li><li><a href="../../docs/index.html" aria-current="page">Docs</a></li><li><a href="../../support/index.html">Support</a></li><li class="nav-store"><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Asset Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap docs-shell">
+<aside class="docs-side" aria-label="Documentation">
+  <div class="docs-product"><a href="index.html">Photoworthy docs</a><span class="pill">v1.0.0</span><span class="pill pill-dev">Coming soon</span></div>
+  <div class="docs-search" hidden>
+    <label class="sr-only" for="docs-q">Search the documentation</label>
+    <input id="docs-q" type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false">
+    <kbd class="docs-search-key" aria-hidden="true">/</kbd>
+    <div class="docs-results" id="docs-results" role="listbox" hidden></div>
+  </div>
+  <nav class="docs-nav"><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html" aria-current="page">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div>
+    <details><summary>All pages</summary><div class="docs-links"><div class="docs-group"><p class=label>Start here</p><a href="index.html">Overview</a><a href="getting-started.html">Quick start</a><a href="samples.html">Demo scenes</a><a href="fit-your-game.html">Fit it into your game</a></div><div class="docs-group"><p class=label>Features</p><a href="subjects.html">Subjects: what the camera recognises</a><a href="scoring.html">Scoring and the Score Inspector</a><a href="requests.html">Photo requests</a><a href="cameras.html">Cameras, photo mode, film and lens</a><a href="album-and-journal.html">Album and journal</a><a href="screens.html">Screens, looks, words and players&#x27; options</a></div><div class="docs-group"><p class=label>Reference</p><a href="scripting.html" aria-current="page">Scripting</a><a href="troubleshooting.html">Troubleshooting and questions</a><a href="support.html">Support</a><a href="changelog.html">Changelog</a></div></div></details>
+  </nav>
+</aside>
+<article class="prose" id="doc">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../docs/index.html">Docs</a><span>/</span><a href="index.html">Photoworthy</a><span>/</span><span>Reference</span></nav>
+<h1 id="scripting">Scripting</h1>
+<p>Everything the built-in screens do goes through public code you can call yourself. All types are in the
+<code>RareGeometry.Photoworthy</code> namespace; reference the <code>RareGeometry.Photoworthy</code> assembly from your own assembly
+definition if you use one.</p>
+<h2 id="the-camera">The camera <a class="anchor" href="#the-camera" aria-label="Link to this section">#</a></h2>
+<pre><code class="language-csharp">using RareGeometry.Photoworthy;
+using UnityEngine;
+
+public class MyCameraButtons : MonoBehaviour
+{
+    public PhotoCamera photoCamera;   // or PhotoCamera.Main
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F)) photoCamera.ToggleHandheld();
+        if (photoCamera.IsOpen &amp;&amp; Input.GetMouseButtonDown(0))
+        {
+            var shot = photoCamera.TakePhoto();
+            if (shot == null) Debug.Log(&quot;Refused: &quot; + photoCamera.WhyNot());
+        }
+    }
+}
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OpenHandheld()</code>, <code>OpenPhotoMode()</code>, <code>Close()</code>, <code>ToggleHandheld()</code>, <code>TogglePhotoMode()</code></td>
+<td>Open and close the camera screens.</td>
+</tr>
+<tr>
+<td><code>TakePhoto()</code></td>
+<td>A photo through the open screen. Returns the shot, or null when refused.</td>
+</tr>
+<tr>
+<td><code>Capture()</code></td>
+<td>A photo of the current view with no screen needed (taken by the game).</td>
+</tr>
+<tr>
+<td><code>Mode</code>, <code>IsOpen</code></td>
+<td>What the camera is doing.</td>
+</tr>
+<tr>
+<td><code>Zoom</code>, <code>Tilt</code>, <code>Lens</code>, <code>FilterIndex</code>, <code>FrameIndex</code>, <code>ResetLens()</code></td>
+<td>The lens.</td>
+</tr>
+<tr>
+<td><code>FilmLeft</code>, <code>AddFilm(n)</code></td>
+<td>Film.</td>
+</tr>
+<tr>
+<td><code>Blocked</code>, <code>CanOpen</code>, <code>CanShoot</code></td>
+<td>Your game's say over when the camera works.</td>
+</tr>
+<tr>
+<td><code>DecideKeep</code></td>
+<td>Your own rule for which photos are kept.</td>
+</tr>
+<tr>
+<td><code>SetStamp(key, value)</code></td>
+<td>Your own values on every photo taken from now on.</td>
+</tr>
+<tr>
+<td><code>WhyNot()</code></td>
+<td>Why a photo would be refused right now.</td>
+</tr>
+<tr>
+<td><code>ShutterFired</code>, <code>ShotReady</code>, <code>ShotDecided</code>, <code>ShotRefused</code>, <code>ModeChanged</code>, <code>LensChanged</code></td>
+<td>Events.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="a-shot-and-a-photo">A shot and a photo <a class="anchor" href="#a-shot-and-a-photo" aria-label="Link to this section">#</a></h2>
+<p><code>TakePhoto</code> returns a <strong>PhotoShot</strong> at once. Its picture arrives a moment later (<code>Ready</code>, or the <code>ShotReady</code>
+event), because reading pixels back and writing the file do not block the game.</p>
+<pre><code class="language-csharp">photoCamera.ShotDecided += shot =&gt;
+{
+    if (!shot.Kept) return;
+    Photo photo = shot.Photo;
+    Debug.Log(photo.mainSubject + &quot;: &quot; + photo.score + &quot; (&quot; + photo.medal + &quot;)&quot;);
+    foreach (PhotoSubjectRecord s in photo.subjects)
+        Debug.Log(s.subject + &quot; doing &quot; + s.behaviour + &quot;, &quot; + Mathf.RoundToInt(s.visible * 100f) + &quot;% visible&quot;);
+};
+</code></pre>
+<p>A <strong>Photo</strong> is the saved record: <code>id</code>, <code>source</code>, <code>judged</code>, <code>score</code>, <code>topScore</code>, <code>medal</code>, <code>passed</code>, <code>mainSubject</code>,
+<code>subjects</code> (each with its score, behaviour, details, regions, visible share, picture share, facing, distance and
+reasons), <code>regions</code>, <code>requests</code> completed, your <code>data</code>, <code>favourite</code>, <code>caption</code>, <code>filter</code>, <code>frame</code>, where the camera
+stood, and the picture's <code>file</code>. Helpers: <code>Shows(id)</code>, <code>Find(id)</code>, <code>Count(id)</code>, <code>GetData(key)</code>.</p>
+<h2 id="change-a-result">Change a result <a class="anchor" href="#change-a-result" aria-label="Link to this section">#</a></h2>
+<pre><code class="language-csharp">void OnEnable() =&gt; PhotoEvents.PhotoEvaluated += Adjust;
+void OnDisable() =&gt; PhotoEvents.PhotoEvaluated -= Adjust;
+
+void Adjust(Photo photo, PhotoContext context)
+{
+    // Double points at night.
+    if (photo.GetData(&quot;time&quot;) != &quot;night&quot;) return;
+    photo.score = Mathf.Min(photo.topScore, photo.score * 2f);
+    photo.medal = context.Profile.Scoring.MedalFor(photo.Share);
+}
+</code></pre>
+<h2 id="photos-with-no-camera-component">Photos with no camera component <a class="anchor" href="#photos-with-no-camera-component" aria-label="Link to this section">#</a></h2>
+<pre><code class="language-csharp">PhotoShot shot = PhotoShoot.Take(anyCamera, profile, PhotoSource.Script, ready: s =&gt; Debug.Log(&quot;Picture is in&quot;));
+</code></pre>
+<p><code>PhotoShoot.Take</code> runs the whole pipeline for any Unity Camera: capture, recognise, judge, keep or discard, save.
+Decide yourself with <code>PhotoShoot.Keep(shot)</code> and <code>PhotoShoot.Discard(shot)</code> when the profile's keep rule is Player
+Chooses.</p>
+<h2 id="only-recognition-no-photo">Only recognition, no photo <a class="anchor" href="#only-recognition-no-photo" aria-label="Link to this section">#</a></h2>
+<p>Ask what a camera can see without taking anything, for AI, tutorials or your own viewfinder:</p>
+<pre><code class="language-csharp">var view = PhotoView.From(Camera.main, profile);
+SubjectSighting sighting = PhotoRecognizer.Look(view, profile.recognition, subject);
+if (sighting != null &amp;&amp; sighting.Recognised) Debug.Log(&quot;In view, &quot; + sighting.Visible + &quot; visible&quot;);
+</code></pre>
+<h2 id="subjects">Subjects <a class="anchor" href="#subjects" aria-label="Link to this section">#</a></h2>
+<pre><code class="language-csharp">var subject = GetComponent&lt;PhotoSubject&gt;();
+subject.SetBehaviour(&quot;eat&quot;);        // doing only this
+subject.BeginBehaviour(&quot;glow&quot;);     // doing this as well
+subject.EndBehaviour(&quot;glow&quot;);
+subject.Photographable = false;     // hide from the camera
+subject.SetData(&quot;mood&quot;, &quot;angry&quot;);   // copied into photos of it
+</code></pre>
+<p><code>SubjectRegistry.All</code> lists every enabled subject; <code>SubjectRegistry.Find(id)</code> finds one by its definition key.</p>
+<h2 id="requests-journal-and-album">Requests, journal and album <a class="anchor" href="#requests-journal-and-album" aria-label="Link to this section">#</a></h2>
+<pre><code class="language-csharp">PhotoRequests.Offer(request);
+PhotoRequests.Withdraw(request);
+bool done = PhotoJournal.Main.IsCompleted(request.Id);
+
+bool found = PhotoJournal.Main.IsDiscovered(&quot;zebra&quot;);
+JournalEntry entry = PhotoJournal.Main.Entry(&quot;zebra&quot;);
+
+foreach (Photo photo in PhotoAlbum.Main.Photos) { }
+PhotoAlbum.Main.LoadThumbnail(photo, texture =&gt; image.texture = texture);
+PhotoAlbum.Main.SetFavourite(photo, true);
+PhotoAlbum.Main.Remove(photo);
+string copy = PhotoAlbum.Main.Export(photo);
+</code></pre>
+<p>Textures handed over by the album belong to it. Do not destroy them, and ask again when a screen reopens: the album
+lets go of pictures it has not been asked for in a while.</p>
+<h2 id="events">Events <a class="anchor" href="#events" aria-label="Link to this section">#</a></h2>
+<p><code>PhotoEvents</code> (static, for the whole game): <code>CameraOpened</code>, <code>CameraClosed</code>, <code>CaptureRequested</code>, <code>PhotoEvaluated</code>,
+<code>PhotoAccepted</code>, <code>PhotoRejected</code>, <code>PhotoSaved</code>, <code>SubjectDiscovered</code>, <code>BehaviourDiscovered</code>, <code>NewBestShot</code>,
+<code>RequestCompleted</code>. Remember to unsubscribe in <code>OnDisable</code>.</p>
+<h2 id="extending">Extending <a class="anchor" href="#extending" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>To change</th>
+<th>Write</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How photos are judged</td>
+<td>A <code>CustomPhotoScorer</code> asset. See <a href="scoring.html">Scoring</a>.</td>
+</tr>
+<tr>
+<td>A request rule</td>
+<td>A <code>CustomPhotoRule</code> asset. See <a href="requests.html">Photo requests</a>.</td>
+</tr>
+<tr>
+<td>Where photos are stored</td>
+<td>An <code>IPhotoStore</code>, opened with <code>PhotoAlbum.Open(store)</code>.</td>
+</tr>
+<tr>
+<td>Where input comes from</td>
+<td>An <code>IPhotoInput</code>, set with <code>PhotoInput.Use(input)</code>.</td>
+</tr>
+<tr>
+<td>Lens effects</td>
+<td>An <code>IPhotoEffects</code>, for a custom render pipeline.</td>
+</tr>
+<tr>
+<td>Words</td>
+<td><code>PhotoText.Translate</code>, <code>PhotoText.Set</code>, or a Text Table asset.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="editor">Editor <a class="anchor" href="#editor" aria-label="Link to this section">#</a></h2>
+<p><code>Tools &gt; Photoworthy &gt; Check Scene For Problems</code> uses the shared Diagnostics window, which lists the checks of every
+Rare Geometry product in the project.</p>
+<div class="doc-pager"><a class="pager prev" href="screens.html"><span class="label">Previous</span>Screens, looks, words and players&#x27; options</a><a class="pager next" href="troubleshooting.html"><span class="label">Next</span>Troubleshooting and questions</a></div>
+<p class="doc-report"><a href="https://github.com/raregeometry/Support/issues/new?title=Docs:+Scripting" rel="noopener">Something unclear or wrong? Tell us</a> &middot; <a href="../../support/index.html">Get help</a></p>
+</article>
+<nav class="docs-toc" aria-label="On this page"><p class="label">On this page</p><ul><li class="toc-2"><a href="#the-camera">The camera</a></li><li class="toc-2"><a href="#a-shot-and-a-photo">A shot and a photo</a></li><li class="toc-2"><a href="#change-a-result">Change a result</a></li><li class="toc-2"><a href="#photos-with-no-camera-component">Photos with no camera component</a></li><li class="toc-2"><a href="#only-recognition-no-photo">Only recognition, no photo</a></li><li class="toc-2"><a href="#subjects">Subjects</a></li><li class="toc-2"><a href="#requests-journal-and-album">Requests, journal and album</a></li><li class="toc-2"><a href="#events">Events</a></li><li class="toc-2"><a href="#extending">Extending</a></li><li class="toc-2"><a href="#editor">Editor</a></li></ul></nav>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html"><img src="../../assets/logo.svg" alt="" width="34" height="34"><span>Rare Geometry</span></a>
+        <p>Core systems, carefully built.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../shipready/index.html">Shipready</a></li>
+          <li><a href="../../bearing/index.html">Bearing</a></li>
+          <li><a href="../../snapbuild/index.html">Snapbuild</a></li>
+          <li><a href="../../interactra/index.html">Interactra</a></li>
+          <li><a href="../../responsive-fx/index.html">Responsive FX</a></li>
+          <li><a href="../../photoworthy/index.html">Photoworthy</a></li>
+          <li><a href="https://assetstore.unity.com/publishers/160196" rel="noopener">Publisher page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="../../docs/index.html">Documentation</a></li>
+          <li><a href="../../support/index.html">Troubleshooting and help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="../../support/index.html">Support</a></li>
+          <li><a href="mailto:raregeometrysupport@gmail.com">Email</a></li>
+          <li><a href="https://discord.gg/AmpBDxRAKu" rel="noopener">Discord</a></li>
+          <li><a href="https://github.com/raregeometry/Support/issues" rel="noopener">Bug tracker</a></li>
+          <li><a href="https://github.com/raregeometry" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2026 Rare Geometry. Unity is a trademark of Unity Technologies.</p>
+      <p>No trackers, no cookies, no analytics.</p>
+    </div>
+  </div>
+</footer>
+<script src="search-index.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>
