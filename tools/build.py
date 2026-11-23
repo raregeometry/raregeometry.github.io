@@ -652,7 +652,8 @@ PRODUCTS = [
         "page_images": {},
     },
     {
-        # Coming soon: page and manual up so the store description's links work. Launch day: "status": "live", "store".
+        # Coming soon: page and manual up so the store description's links work; no web demo (Mark, 23 Nov 2026).
+        # Launch day: "status": "live", "store".
         "slug": "photoworthy",
         "lineup": True,
         "name": "Photoworthy",
@@ -870,7 +871,7 @@ def product_cards(root):
 
 
 # Products whose web demo was withdrawn (Mark, 23 Nov 2026): never link a demo for these, even if a demo folder exists.
-NO_WEB_DEMO = {"snapbuild", "interactra"}
+NO_WEB_DEMO = {"snapbuild", "interactra", "photoworthy"}
 
 
 def product_showcase(root):
