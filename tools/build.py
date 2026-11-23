@@ -574,8 +574,8 @@ PRODUCTS = [
         "page_images": {},
     },
     {
-        # Coming soon: page, manual and playable web demo up (Mark, 12 Nov: "push the Responsive FX page and demo to the
-        # website"); on launch day set "status": "live" and "store". Replaces the Hit Feedback and Footstep kits.
+        # Coming soon: page and manual up; no web demo (Mark, 23 Nov 2026: removed). On launch day set "status": "live"
+        # and "store". Replaces the Hit Feedback and Footstep kits.
         "slug": "responsive-fx",
         "lineup": True,
         "name": "Responsive FX",
@@ -871,7 +871,7 @@ def product_cards(root):
 
 
 # Products whose web demo was withdrawn (Mark, 23 Nov 2026): never link a demo for these, even if a demo folder exists.
-NO_WEB_DEMO = {"snapbuild", "interactra", "photoworthy"}
+NO_WEB_DEMO = {"snapbuild", "interactra", "photoworthy", "responsive-fx"}
 
 
 def product_showcase(root):
@@ -1392,7 +1392,7 @@ HAND_PAGES = [
     ("responsive-fx.html", "responsive-fx/index.html", "../", "rfx",
      "Responsive FX",
      "Game feel for every hit, step and impact in Unity: damage numbers, hitstop and shake, footsteps and footprints, "
-     "bullet marks, physics impacts and AI hearing, tuned in one window. Play the demo in your browser. Coming soon to "
+     "bullet marks, physics impacts and AI hearing, tuned in one window. Coming soon to "
      "the Unity Asset Store."),
     ("photoworthy.html", "photoworthy/index.html", "../", "",
      "Photoworthy",
