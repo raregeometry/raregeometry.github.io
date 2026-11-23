@@ -520,8 +520,8 @@ PRODUCTS = [
         "page_images": {},
     },
     {
-        # Snapbuild is the Prefab Builder Kit's 2.0: the same Asset Store listing, renamed. Page, docs
-        # (--docs snapbuild=<its product folder>) and the web demo (snapbuild/demo/) are up.
+        # Snapbuild is the Prefab Builder Kit's 2.0: the same Asset Store listing, renamed. Page and docs
+        # (--docs snapbuild=<its product folder>) are up. No web demo (Mark, 23 Nov 2026: removed).
         "slug": "snapbuild",
         "lineup": True,
         "name": "Snapbuild",
@@ -548,8 +548,7 @@ PRODUCTS = [
         "page_images": {},
     },
     {
-        # Coming soon: page and playable web demo up (Mark, 12 Nov: "push all five product pages, docs and web demos");
-        # on launch day set "status": "live" and "store".
+        # Coming soon: page up, no web demo (Mark, 23 Nov 2026: removed); on launch day set "status": "live" and "store".
         "slug": "interactra",
         "lineup": True,
         "name": "Interactra",
@@ -870,6 +869,10 @@ def product_cards(root):
     return "\n      ".join(product_card(root, p, lazy=False) for p in lineup_order())
 
 
+# Products whose web demo was withdrawn (Mark, 23 Nov 2026): never link a demo for these, even if a demo folder exists.
+NO_WEB_DEMO = {"snapbuild", "interactra"}
+
+
 def product_showcase(root):
     """The home page's "closer look": one wide row per product, pictures on alternating sides."""
     rows = []
@@ -877,7 +880,7 @@ def product_showcase(root):
         slug = p["slug"]
         art = LINEUP_ART.get(slug, {})
         buttons = [f'<a class="btn" href="{root}{slug}/index.html">Explore {html.escape(p["short"])}</a>']
-        if (SITE / slug / "demo" / "index.html").exists():
+        if slug not in NO_WEB_DEMO and (SITE / slug / "demo" / "index.html").exists():
             buttons.append(f'<a class="btn btn-ghost" href="{root}{slug}/demo/index.html">Play the demo</a>')
         links = []
         if p["status"] == "live" and p.get("store"):
@@ -1380,11 +1383,11 @@ HAND_PAGES = [
     ("snapbuild.html", "snapbuild/index.html", "../", "",
      "Snapbuild: Prefab World Builder",
      "Build whole worlds in Unity from the prefabs you already own: stamp and paint them on a grid that snaps, draw roads "
-     "that join themselves, dress streets in one click. Try the demo in your browser."),
+     "that join themselves, dress streets in one click."),
     ("interactra.html", "interactra/index.html", "../", "",
      "Interactra",
      "Make anything interactive, then let players build, for Unity: doors, switches, keys and elevators from your own "
-     "prefabs, runtime building with ghosts, blueprints and wiring. Play the demo in your browser. Coming soon to the Unity Asset Store."),
+     "prefabs, runtime building with ghosts, blueprints and wiring. Coming soon to the Unity Asset Store."),
     ("responsive-fx.html", "responsive-fx/index.html", "../", "rfx",
      "Responsive FX",
      "Game feel for every hit, step and impact in Unity: damage numbers, hitstop and shake, footsteps and footprints, "
